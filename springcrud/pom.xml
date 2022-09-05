@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.0.3-crud_book</version>
+	<version>0.0.5-crud_book_p3</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model</name>
+	<name>Crud Book Model - Service and Dao's layer</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 
