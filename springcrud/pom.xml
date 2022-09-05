@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.0.8-book_validation</version>
+	<version>0.0.9-delete_book</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Book validation</name>
+	<name>Crud Book Model - Delete book</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 

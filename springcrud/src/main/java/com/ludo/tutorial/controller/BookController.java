@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ludo.tutorial.model.Book;
 import com.ludo.tutorial.service.BookService;
@@ -50,6 +51,12 @@ public class BookController {
 
 		bookService.save(book);
 
+		return "redirect:/book/list";
+	}
+
+	@GetMapping("/delete")
+	public String deleteBook(@RequestParam("id") long id) {
+		bookService.deleteBook(id);
 		return "redirect:/book/list";
 	}
 }

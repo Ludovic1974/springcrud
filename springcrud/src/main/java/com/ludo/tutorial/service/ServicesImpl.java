@@ -33,4 +33,10 @@ public class ServicesImpl implements BookService {
 		bookDao.save(book);
 	}
 
+	@Override
+	@Transactional
+	public void deleteBook(long id) {
+		bookDao.delete(id);
+	}
+
 }

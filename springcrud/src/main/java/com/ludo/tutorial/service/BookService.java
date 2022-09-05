@@ -10,4 +10,6 @@ public interface BookService {
 	long numBooks();
 
 	void save(Book book);
+
+	void deleteBook(long id);
 }

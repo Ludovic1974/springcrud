@@ -38,4 +38,11 @@ public class BookDaoImpl implements BookDao {
 		sessionFactory.getCurrentSession().save(book);
 	}
 
+	@Override
+	public void delete(long id) {
+		Book savedBookEntity = sessionFactory.getCurrentSession().find(Book.class, id);
+		sessionFactory.getCurrentSession().remove(savedBookEntity);
+
+	}
+
 }

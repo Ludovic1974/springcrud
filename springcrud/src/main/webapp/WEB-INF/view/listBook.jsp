@@ -23,7 +23,7 @@
 								</form:label>
 								<form:input id="title" path="title" cssClass="form-control"
 									onmouseover="pinta('title')" onmouseout="vuelve('title')" />
-								<form:errors path="title" cssClass="error" />														
+								<form:errors path="title" cssClass="error" />
 							</div>
 							<div class="mb-3">
 								<form:label path="author" cssClass="form-label">Autor<span
@@ -32,7 +32,7 @@
 								<form:input id="author" path="author" cssClass="form-control"
 									onmouseover="pinta('author')" onmouseout="vuelve('author')" />
 								<form:errors path="author" cssClass="error" />
-							</div>							
+							</div>
 							<button type="submit" class="btn btn-primary">Validar</button>
 						</form:form>
 					</fieldset>
@@ -45,22 +45,25 @@
 							<tr>
 								<th width="28%">Título</th>
 								<th width="22%">Autor</th>
-								
+
 								<th colspan="2" width="8%">Acciones</th>
 
 							</tr>
 							<c:if test="${how_many > 0}">
 								<c:forEach items="${books}" var="book">
-									
+
+									<c:url var="delete" value="delete">
+										<c:param name="id" value="${book.id}" />
+									</c:url>
+
 									<tr>
 										<td>${book.title}</td>
 										<td>${book.author}</td>
-										
+
 										<td colspan="2"><a href="#"
 											title="Actualizar ${book.title} con id ${book.id}">
 												<button type="submit" class="btn btn-success btn-sm">M</button>
-										</a><a href="#"
-											title="Borrar ${book.title} con id ${book.id}">
+										</a><a href="${delete}" title="Borrar ${book.title} con id ${book.id}">
 												<button type="submit" class="btn btn-danger btn-sm"
 													onclick="if(!(confirm('¿Seguro que quieres eliminar el registro?'))) return false">X</button>
 										</a></td>
@@ -79,6 +82,18 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+     
+        function pinta(id){
+            document.getElementById(id).style.backgroundColor = "#d2d2d2";
+        }
+        
+        function vuelve(id){
+            document.getElementById(id).style.backgroundColor = "WHITE";
+        }
+     
+     
+    </script>
 	<jsp:include page="/WEB-INF/view/templates/footer.jsp">
 		<jsp:param name="web" value="ludoviclaisnez.com" />
 	</jsp:include>
