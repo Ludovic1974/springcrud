@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +47,7 @@
 							<tr>
 								<th width="28%">Título</th>
 								<th width="22%">Autor</th>
-
+								<th width="22%">Modificado</th>
 								<th colspan="2" width="8%">Acciones</th>
 
 							</tr>
@@ -56,7 +57,7 @@
 									<c:url var="delete" value="delete">
 										<c:param name="id" value="${book.id}" />
 									</c:url>
-									
+
 									<c:url var="edit" value="edit">
 										<c:param name="id" value="${book.id}" />
 									</c:url>
@@ -64,11 +65,12 @@
 									<tr>
 										<td>${book.title}</td>
 										<td>${book.author}</td>
-
+										<td><fmt:formatDate type="both" value="${book.updatedAt}" dateStyle="long" timeStyle="short"/></td>
 										<td colspan="2"><a href="${edit}"
 											title="Actualizar ${book.title} con id ${book.id}">
 												<button type="submit" class="btn btn-success btn-sm">M</button>
-										</a><a href="${delete}" title="Borrar ${book.title} con id ${book.id}">
+										</a><a href="${delete}"
+											title="Borrar ${book.title} con id ${book.id}">
 												<button type="submit" class="btn btn-danger btn-sm"
 													onclick="if(!(confirm('¿Seguro que quieres eliminar el registro?'))) return false">X</button>
 										</a></td>
@@ -77,7 +79,7 @@
 							</c:if>
 							<c:if test="${how_many == 0}">
 								<tr>
-									<td colspan="4">La tabla no contiene registros</td>
+									<td colspan="5">La tabla no contiene registros</td>
 								</tr>
 							</c:if>
 
@@ -88,17 +90,14 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-     
-        function pinta(id){
-            document.getElementById(id).style.backgroundColor = "#d2d2d2";
-        }
-        
-        function vuelve(id){
-            document.getElementById(id).style.backgroundColor = "WHITE";
-        }
-     
-     
-    </script>
+		function pinta(id) {
+			document.getElementById(id).style.backgroundColor = "#d2d2d2";
+		}
+
+		function vuelve(id) {
+			document.getElementById(id).style.backgroundColor = "WHITE";
+		}
+	</script>
 	<jsp:include page="/WEB-INF/view/templates/footer.jsp">
 		<jsp:param name="web" value="ludoviclaisnez.com" />
 	</jsp:include>

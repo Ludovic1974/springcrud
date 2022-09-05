@@ -1,5 +1,7 @@
 package com.ludo.tutorial.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,14 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "book")
-public class Book {
+public class Book extends DateColumns {
+
+	/*
+	 * El hecho de añadir la herencia DateColumns al proyecto hará que el sistema
+	 * añadirá nuevas columnas al modelo Book. Eso nos obligará a borrar la tabla
+	 * Book de nuestra base de datos.
+	 * 
+	 */
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,9 +41,15 @@ public class Book {
 
 	}
 
-	public Book(long id,
+	public Book(Date createdAt, Date updatedAt) {
+		super(createdAt, updatedAt);
+
+	}
+
+	public Book(Date createdAt, Date updatedAt, long id,
 			@Size(max = 225, min = 1, message = "{book.title.invalid}") @NotEmpty(message = "{book.value.required}") String title,
 			@Size(max = 225, min = 1, message = "{book.author.invalid}") @NotEmpty(message = "{book.value.required}") String author) {
+		super(createdAt, updatedAt);
 		this.id = id;
 		this.title = title;
 		this.author = author;
