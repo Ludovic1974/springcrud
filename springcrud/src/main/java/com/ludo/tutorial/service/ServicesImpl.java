@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ludo.tutorial.dao.BookDao;
+import com.ludo.tutorial.model.Book;
 
 @Service
 public class ServicesImpl implements BookService {
@@ -24,6 +25,12 @@ public class ServicesImpl implements BookService {
 	@Transactional
 	public long numBooks() {
 		return bookDao.num();
+	}
+
+	@Override
+	@Transactional
+	public void save(Book book) {
+		bookDao.save(book);
 	}
 
 }
