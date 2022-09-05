@@ -13,5 +13,5 @@
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous" type="text/css" />
 <link
-	href="${pageContext.request.contextPath}/assets/css/gestion_forms.css"
+	href="${pageContext.request.contextPath}/assets/css/custom.css"
 	rel="stylesheet" type="text/css" />

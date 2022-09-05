@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.0.6-book_table</version>
+	<version>0.0.8-book_validation</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Book table</name>
+	<name>Crud Book Model - Book validation</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 
@@ -101,6 +101,14 @@
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>	
+		
+			<!-- Hibernate Validator -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.0.17.Final</version>
+		</dependency>
 
 
 	</dependencies>
