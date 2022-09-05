@@ -8,8 +8,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ludo.tutorial.model.Book;
-
 @Repository
 public class BookDaoImpl implements BookDao {
 
@@ -31,11 +29,6 @@ public class BookDaoImpl implements BookDao {
 		long count = ((long) sessionFactory.getCurrentSession().createQuery("SELECT COUNT(*) FROM Book")
 				.uniqueResult());
 		return count;
-	}
-
-	@Override
-	public void save(Book book) {
-		sessionFactory.getCurrentSession().save(book);
 	}
 
 }

@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.0.8-book_form</version>
+	<version>0.0.6-book_table</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Book form</name>
+	<name>Crud Book Model - Book table</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 
@@ -101,7 +101,6 @@
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>	
-	
 
 
 	</dependencies>

@@ -17,7 +17,6 @@ public class MainController {
 		msj += "Versión 0.0.4 Creación la carpeta resources.<br/>";
 		msj += "Versión 0.0.5 Creación de las capas de negocio y de acceso a datos.<br/>";
 		msj += "Versión 0.0.6 Impresión en tabla de los libros incluidos en la base de datos.<br/>";
-		msj += "Versión 0.0.7 Configuración del formulario para incluir libros en la base de datos.<br/>";
 		mv.addObject("descripcion",
 				"En esta sección, aprenderemos cómo crear un CRUD usando Spring MVC e Hibernate ORM framework "
 						+ "sin ningún fichero de configuración XML que no sea el POM de Maven.");
