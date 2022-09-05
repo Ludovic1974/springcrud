@@ -1,7 +1,8 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <nav class="navbar navbar-expand-lg bg-light">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="${pageContext.request.contextPath}/index">Java SpringCrud</a>
+		<a class="navbar-brand"
+			href="${pageContext.request.contextPath}/index">Java SpringCrud</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarText" aria-controls="navbarText"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -13,6 +14,10 @@
 					href="${pageContext.request.contextPath}/index"
 					class="nav-link ${menu == 'index' ? 'active' : ''}"
 					aria-current="page">Portada</a></li>
+				<li class="nav-item"><a
+					href="${pageContext.request.contextPath}/book/list"
+					class="nav-link">Gestionar
+						libros</a></li>
 
 			</ul>
 			<form:form action="#" class="d-flex" method="POST">
