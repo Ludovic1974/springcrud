@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.0.5-crud_book_p3</version>
+	<version>0.0.6-book_table</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Service and Dao's layer</name>
+	<name>Crud Book Model - Book table</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 
@@ -60,7 +60,7 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework}</version>
 		</dependency>
-		
+
 		<!-- PARA AÑADIR NUEVAS TAGS Y REALIZAR ACCIONES ESPECIALES
 		EN LOS FICHEROS JSP COMO BUCLES, CONDICIONALES...
 		https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
@@ -100,7 +100,7 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>${hibernate.version}</version>
-		</dependency>
+		</dependency>	
 
 
 	</dependencies>

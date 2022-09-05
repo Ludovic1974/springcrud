@@ -11,11 +11,12 @@ public class MainController {
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("titulo", "Inserción de estilos tipo Bootstrap");
-		String msj = "Versión 0.0.1 Hola mundo<br/>";
-		msj += "Versión 0.0.2 Configuración de estilos con Bootstrap<br/>";
-		msj += "Versión 0.0.3 Creación del modelo Book<br/>";
-		msj += "Versión 0.0.4 Creación la carpeta resources<br/>";
-		msj += "Versión 0.0.5 Creación de las capas de negocio y de acceso a datos<br/>";
+		String msj = "Versión 0.0.1 Hola mundo.<br/>";
+		msj += "Versión 0.0.2 Configuración de estilos con Bootstrap.<br/>";
+		msj += "Versión 0.0.3 Creación del modelo Book.<br/>";
+		msj += "Versión 0.0.4 Creación la carpeta resources.<br/>";
+		msj += "Versión 0.0.5 Creación de las capas de negocio y de acceso a datos.<br/>";
+		msj += "Versión 0.0.6 Impresión en tabla de los libros incluidos en la base de datos.<br/>";
 		mv.addObject("descripcion",
 				"En esta sección, aprenderemos cómo crear un CRUD usando Spring MVC e Hibernate ORM framework "
 						+ "sin ningún fichero de configuración XML que no sea el POM de Maven.");

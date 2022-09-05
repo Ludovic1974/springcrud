@@ -24,4 +24,11 @@ public class BookDaoImpl implements BookDao {
 		return query.getResultList();
 	}
 
+	@Override
+	public long num() {
+		long count = ((long) sessionFactory.getCurrentSession().createQuery("SELECT COUNT(*) FROM Book")
+				.uniqueResult());
+		return count;
+	}
+
 }

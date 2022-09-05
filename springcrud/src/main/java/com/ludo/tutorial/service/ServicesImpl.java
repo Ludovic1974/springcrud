@@ -20,4 +20,10 @@ public class ServicesImpl implements BookService {
 		return bookDao.list();
 	}
 
+	@Override
+	@Transactional
+	public long numBooks() {
+		return bookDao.num();
+	}
+
 }

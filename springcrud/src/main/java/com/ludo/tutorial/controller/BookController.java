@@ -23,6 +23,7 @@ public class BookController {
 //		ArrayList<Book> books = new ArrayList<Book>(Arrays.asList(book1, book2));
 		mv.addObject("books", bookService.listBooks());
 		mv.addObject("titulo", "Lista de libros");
+		mv.addObject("how_many", bookService.numBooks());
 		mv.addObject("descripcion", "En esta sección, después de haber creado instancias de libros, los listamos.");
 		mv.setViewName("listBook");
 		return mv;
