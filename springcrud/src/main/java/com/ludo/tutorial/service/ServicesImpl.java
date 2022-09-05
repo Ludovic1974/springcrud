@@ -39,4 +39,11 @@ public class ServicesImpl implements BookService {
 		bookDao.delete(id);
 	}
 
+	@Override
+	@Transactional
+	public Book getBook(long id) {
+		Book book = bookDao.get(id);
+		return book;
+	}
+
 }

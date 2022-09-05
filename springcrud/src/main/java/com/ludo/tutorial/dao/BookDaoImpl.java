@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.TypedQuery;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,7 +36,7 @@ public class BookDaoImpl implements BookDao {
 
 	@Override
 	public void save(Book book) {
-		sessionFactory.getCurrentSession().save(book);
+		sessionFactory.getCurrentSession().saveOrUpdate(book);
 	}
 
 	@Override
@@ -43,6 +44,13 @@ public class BookDaoImpl implements BookDao {
 		Book savedBookEntity = sessionFactory.getCurrentSession().find(Book.class, id);
 		sessionFactory.getCurrentSession().remove(savedBookEntity);
 
+	}
+
+	@Override
+	public Book get(long id) {
+		Session session = sessionFactory.getCurrentSession();
+		Book book = session.get(Book.class, id);
+		return book;
 	}
 
 }

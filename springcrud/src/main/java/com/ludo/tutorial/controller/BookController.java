@@ -59,4 +59,12 @@ public class BookController {
 		bookService.deleteBook(id);
 		return "redirect:/book/list";
 	}
+
+	@GetMapping("/edit")
+	public String editBook(@RequestParam("id") long id, Model model) {
+		Book book = bookService.getBook(id);
+		model.addAttribute(book);
+		addAttributes(model, "Formulario Libros", "Formulario para añadir/modificar los libros");
+		return "listBook";
+	}
 }

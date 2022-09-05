@@ -20,6 +20,7 @@ public class MainController {
 		msj += "Versión 0.0.7 Configuración del formulario para incluir libros en la base de datos.<br/>";
 		msj += "Versión 0.0.8 Validación del formulario.<br/>";
 		msj += "Versión 0.0.9 Modificación del formulario para poder borrar libros.<br/>";
+		msj += "Versión 0.1.0 Modificación del formulario para poder actualizar libros.<br/>";
 		mv.addObject("descripcion",
 				"En esta sección, aprenderemos cómo crear un CRUD usando Spring MVC e Hibernate ORM framework "
 						+ "sin ningún fichero de configuración XML que no sea el POM de Maven.");

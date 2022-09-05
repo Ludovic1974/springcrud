@@ -24,6 +24,7 @@
 								<form:input id="title" path="title" cssClass="form-control"
 									onmouseover="pinta('title')" onmouseout="vuelve('title')" />
 								<form:errors path="title" cssClass="error" />
+								<form:hidden path="id" />
 							</div>
 							<div class="mb-3">
 								<form:label path="author" cssClass="form-label">Autor<span
@@ -55,12 +56,16 @@
 									<c:url var="delete" value="delete">
 										<c:param name="id" value="${book.id}" />
 									</c:url>
+									
+									<c:url var="edit" value="edit">
+										<c:param name="id" value="${book.id}" />
+									</c:url>
 
 									<tr>
 										<td>${book.title}</td>
 										<td>${book.author}</td>
 
-										<td colspan="2"><a href="#"
+										<td colspan="2"><a href="${edit}"
 											title="Actualizar ${book.title} con id ${book.id}">
 												<button type="submit" class="btn btn-success btn-sm">M</button>
 										</a><a href="${delete}" title="Borrar ${book.title} con id ${book.id}">
