@@ -10,13 +10,14 @@ public class MainController {
 	@RequestMapping({ "/", "/index" })
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("titulo", "Hola Mundo");
-		String msj = "Versión 0.0.1 Hola mundo";
+		mv.addObject("titulo", "Inserción de estilos tipo Bootstrap");
+		String msj = "Versión 0.0.1 Hola mundo<br/>";
+		msj += "Versión 0.0.2 Configuración de estilos con Bootstrap";
 		mv.addObject("descripcion",
 				"En esta sección, aprenderemos cómo crear un CRUD usando Spring MVC e Hibernate ORM framework "
 						+ "sin ningún fichero de configuración XML que no sea el POM de Maven.");
 		mv.addObject("descripcion_larga", msj);
-		mv.setViewName("hola_mundo");
+		mv.setViewName("index");
 
 		return mv;
 	}
