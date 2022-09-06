@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg bg-light">
 	<div class="container-fluid">
 		<a class="navbar-brand"
-			href="${pageContext.request.contextPath}/index">Java SpringCrud</a>
+			href="${pageContext.request.contextPath}/">Java SpringCrud</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarText" aria-controls="navbarText"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +11,7 @@
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item"><a
-					href="${pageContext.request.contextPath}/index"
+					href="${pageContext.request.contextPath}/"
 					class="nav-link ${menu == 'index' ? 'active' : ''}"
 					aria-current="page">Portada</a></li>
 				<li class="nav-item"><a

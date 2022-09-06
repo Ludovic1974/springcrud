@@ -2,12 +2,16 @@ package com.ludo.tutoriales.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -27,6 +31,20 @@ public class Book extends DateColumns {
 	@Size(max = 225, min = 1, message = "{book.author.invalid}")
 	@NotEmpty(message = "{book.author.required}")
 	private String author;
+
+	// RELACION 1A1 CON BOOKDETAILS
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "book", fetch = FetchType.LAZY)
+	@Valid
+	private BookDetails bookDetails;
+
+	public BookDetails getBookDetails() {
+		return bookDetails;
+	}
+
+	public void setBookDetails(BookDetails bookDetails) {
+		this.bookDetails = bookDetails;
+	}
+	// FIN RELACION 1A1 CON BOOKDETAILS
 
 	public Book(Date createdAt, Date updatedAt, long id,
 			@Size(max = 225, min = 1, message = "{book.title.invalid}") @NotEmpty(message = "{book.title.required}") String title,

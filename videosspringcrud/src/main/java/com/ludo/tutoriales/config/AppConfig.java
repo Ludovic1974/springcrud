@@ -26,6 +26,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.ludo.tutoriales.model.Book;
+import com.ludo.tutoriales.model.BookDetails;
 
 @Configuration
 @EnableTransactionManagement
@@ -60,7 +61,7 @@ public class AppConfig {
 		props.put(C3P0_MAX_STATEMENTS, env.getProperty("hibernate.c3p0.max_statements"));
 
 		factoryBean.setHibernateProperties(props);
-		factoryBean.setAnnotatedClasses(new Class[] { Book.class });
+		factoryBean.setAnnotatedClasses(new Class[] { Book.class, BookDetails.class });
 
 		return factoryBean;
 	}
