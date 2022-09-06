@@ -1,0 +1,11 @@
+INSERT INTO `book` (`id`, `author`, `title`) VALUES
+(1, 'Julio Verne', 'Veinte mil leguas de viaje submarino'),
+(2, 'Bernard Werber', 'Hormigas'),
+(3, 'Victor Hugo', 'Los miserables'),
+(4, 'Stephen King', 'Cujo'),
+(5, 'La Fontaine', 'Fábulas'),
+(6, 'George Sand', 'La pequeña Fadette'),
+(7, 'George Sand', 'Historia de mi vida'),
+(8, 'Guy de Maupassant', 'Bel ami'),
+(9, 'François Rabelais', 'Gargantua y Pantagruel'),
+(10, 'François Rabelais', 'Tercer libro de Pantagruel');
