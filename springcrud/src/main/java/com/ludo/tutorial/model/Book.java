@@ -2,12 +2,16 @@ package com.ludo.tutorial.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -36,6 +40,20 @@ public class Book extends DateColumns {
 	@Size(max = 225, min = 1, message = "{book.author.invalid}")
 	@NotEmpty(message = "{book.value.required}")
 	private String author;
+
+	// https://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence-api
+	// de uno a uno se puede permitir el uso de ALL
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "book", fetch = FetchType.LAZY)
+	@Valid
+	private BookDetails bookDetails;
+
+	public BookDetails getBookDetails() {
+		return bookDetails;
+	}
+
+	public void setBookDetails(BookDetails bookDetails) {
+		this.bookDetails = bookDetails;
+	}
 
 	public Book() {
 

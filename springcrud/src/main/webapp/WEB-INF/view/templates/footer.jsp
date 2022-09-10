@@ -1,4 +1,4 @@
-<footer class="fixed-bottom z-index-negative">
+<footer id="layout-footer" class="fixed-bottom">
 	<div class="flex-shrink-0">
 		<div class="container">
 			<div class="row">
