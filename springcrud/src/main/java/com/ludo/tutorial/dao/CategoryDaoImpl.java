@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.ludo.tutorial.model.Category;
 
 @Repository
-public class CategoryDaoImpl implements ObjectDao {
+public class CategoryDaoImpl implements LibraryDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;

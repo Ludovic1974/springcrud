@@ -6,24 +6,31 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ludo.tutorial.dao.ObjectDao;
+import com.ludo.tutorial.dao.LibraryDao;
+import com.ludo.tutorial.dao.UserDao;
 import com.ludo.tutorial.model.Book;
 import com.ludo.tutorial.model.Category;
+import com.ludo.tutorial.model.User;
 import com.ludo.tutorial.other.Fecha;
 
 @Service
-public class ServicesImpl implements BookService, CategoryService {
+public class ServicesImpl implements BookService, CategoryService, UserService {
 
 	@Autowired
 	@Qualifier("bookDaoImpl")
-	private ObjectDao bookDao;
+	private LibraryDao bookDao;
 
 	@Autowired
 	@Qualifier("categoryDaoImpl")
-	private ObjectDao categoryDao;
+	private LibraryDao categoryDao;
+
+	@Autowired
+	@Qualifier("userDaoImpl")
+	private UserDao userDao;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -103,6 +110,57 @@ public class ServicesImpl implements BookService, CategoryService {
 	public Category getCategory(long id) {
 		// TODO Auto-generated method stub
 		return (Category) categoryDao.get(id);
+	}
+
+	@Override
+	@Transactional
+	public User getUser(String username) {
+		return (User) userDao.get(username);
+	}
+
+	@Override
+	@Transactional
+	public void save(User user) {
+		User copiaUser = null;
+		// Si se trata de una creación de usuario
+		if (userDao.get(user.getUsername()) == null) {
+			copiaUser = new User();
+			copiaUser.setEnabled(true);
+			copiaUser.setCreatedAt(Fecha.getTimeStamp());
+		} else {// El usuario ya existe
+			copiaUser = (User) userDao.get(user.getUsername());
+			copiaUser.setEnabled(user.isEnabled());
+		}
+		copiaUser.setUpdatedAt(Fecha.getTimeStamp());
+		copiaUser.setUsername(user.getUsername());
+		copiaUser.setEmail(user.getEmail().toLowerCase());
+		copiaUser.setSurname(user.getSurname().toUpperCase());
+		copiaUser.setName(user.getName().substring(0, 1).toUpperCase()
+				+ user.getName().substring(1, user.getName().length()).toLowerCase());
+		// tenemos que encriptar la contraseña
+		String encoded = new BCryptPasswordEncoder().encode(user.getPassword());
+		copiaUser.setPassword(encoded);
+		copiaUser.setConfirmPassword(encoded);
+		userDao.save(copiaUser);
+
+	}
+
+	@Override
+	@Transactional
+	public void deleteUser(String username) {
+		userDao.delete(username);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<?> listUsers() {
+		return userDao.list();
+	}
+
+	@Override
+	@Transactional
+	public long numUsers() {
+		return userDao.num();
 	}
 
 }

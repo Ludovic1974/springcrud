@@ -8,8 +8,4 @@ public interface ObjectDao {
 	long num();
 
 	void save(Object obj);
-
-	void delete(long id);
-
-	Object get(long id);
 }
