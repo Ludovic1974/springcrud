@@ -13,7 +13,7 @@ import com.ludo.tutorial.model.Book;
 import com.ludo.tutorial.model.Category;
 
 @Repository
-public class BookDaoImpl implements ObjectDao {
+public class BookDaoImpl implements LibraryDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;

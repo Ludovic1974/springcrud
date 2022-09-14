@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ludo.tutorial.dao.ObjectDao;
+import com.ludo.tutorial.dao.LibraryDao;
 import com.ludo.tutorial.model.Book;
 import com.ludo.tutorial.model.Category;
 import com.ludo.tutorial.other.Fecha;
@@ -19,11 +19,11 @@ public class ServicesImpl implements BookService, CategoryService {
 
 	@Autowired
 	@Qualifier("bookDaoImpl")
-	private ObjectDao bookDao;
+	private LibraryDao bookDao;
 
 	@Autowired
 	@Qualifier("categoryDaoImpl")
-	private ObjectDao categoryDao;
+	private LibraryDao categoryDao;
 
 	@Override
 	@Transactional(readOnly = true)

@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.1.4-bookCategory-p2</version>
+	<version>0.1.5-interfaces-and-liskov</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Book's category</name>
+	<name>Crud Book Model - Liskov substitution principle</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 
