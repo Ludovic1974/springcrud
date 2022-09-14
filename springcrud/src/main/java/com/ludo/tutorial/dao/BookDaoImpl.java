@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ludo.tutorial.model.Book;
+import com.ludo.tutorial.model.Category;
 
 @Repository
 public class BookDaoImpl implements ObjectDao {
@@ -36,7 +37,23 @@ public class BookDaoImpl implements ObjectDao {
 
 	@Override
 	public void save(Object book) {
-		sessionFactory.getCurrentSession().saveOrUpdate(book);
+		Category category = null;
+		Book libro = (Book) book;
+		String categoryName = libro.getCategory().getName();
+		category = (Category) sessionFactory.getCurrentSession()
+				.createQuery("from Category c where c.name = :categoria_enviada")
+				.setParameter("categoria_enviada", categoryName).uniqueResult();
+
+		if (category != null) {
+			libro.setCategory(category);
+			category.getBooks().add(libro);
+			if (libro.getId() > 0) {
+				sessionFactory.getCurrentSession().merge(category);
+			} else {
+				sessionFactory.getCurrentSession().persist(category);
+			}
+
+		}
 	}
 
 	@Override

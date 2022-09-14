@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
@@ -55,20 +57,43 @@ public class Book extends DateColumns {
 		this.bookDetails = bookDetails;
 	}
 
-	public Book() {
+	@ManyToOne
+	@JoinColumn(name = "cat_id")
+	@Valid
+	private Category category;
 
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Book() {
+		System.out.println("ese");
 	}
 
 	public Book(Date createdAt, Date updatedAt) {
 		super(createdAt, updatedAt);
-
+		System.out.println("este");
 	}
 
 	public Book(Date createdAt, Date updatedAt, long id,
 			@Size(max = 225, min = 1, message = "{book.title.invalid}") @NotEmpty(message = "{book.value.required}") String title,
 			@Size(max = 225, min = 1, message = "{book.author.invalid}") @NotEmpty(message = "{book.value.required}") String author) {
 		super(createdAt, updatedAt);
+		System.out.println("aquel");
 		this.id = id;
+		this.title = title;
+		this.author = author;
+
+	}
+
+	public Book(Date createdAt, Date updatedAt,
+			@Size(max = 225, min = 1, message = "{book.title.invalid}") @NotEmpty(message = "{book.value.required}") String title,
+			@Size(max = 225, min = 1, message = "{book.author.invalid}") @NotEmpty(message = "{book.value.required}") String author) {
+		super(createdAt, updatedAt);
 		this.title = title;
 		this.author = author;
 	}

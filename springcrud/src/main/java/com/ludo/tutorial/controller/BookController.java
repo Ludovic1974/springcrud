@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ludo.tutorial.model.Book;
 import com.ludo.tutorial.service.BookService;
+import com.ludo.tutorial.service.CategoryService;
 
 @Controller
 @RequestMapping(value = "/book")
@@ -21,6 +22,9 @@ public class BookController {
 
 	@Autowired
 	private BookService bookService;
+
+	@Autowired
+	private CategoryService categoryService;
 
 	@GetMapping("/list")
 	public String listBooks(Model model) {
@@ -33,6 +37,8 @@ public class BookController {
 	}
 
 	private void addAttributes(Model model, String ttl, String msj) {
+		model.addAttribute("categories", categoryService.listCategories());
+		model.addAttribute("menu", "lista_libros");
 		model.addAttribute("books", bookService.listBooks());
 		model.addAttribute("how_many", bookService.numBooks());
 		model.addAttribute("titulo", ttl);
