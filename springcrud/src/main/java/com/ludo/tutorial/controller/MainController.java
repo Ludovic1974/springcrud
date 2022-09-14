@@ -24,6 +24,7 @@ public class MainController {
 		msj += "Versión 0.1.1 Modificación del modelo Book: Le extendemos al modelo DateColumns "
 				+ "y añadimos dos columnas de fecha a la tabla. Indicarán cuando se ha creado un registro y cuando se ha actualizado.<br/>";
 		msj += "Versión 0.1.2 Creación del modelo BookDetails y de la relación con Book. Configuración de la validación.<br/>";
+		msj += "Versión 0.1.3 Creación del modelo Category y del formulario.<br/>";
 		mv.addObject("descripcion",
 				"En esta sección, aprenderemos cómo crear un CRUD usando Spring MVC e Hibernate ORM framework "
 						+ "sin ningún fichero de configuración XML que no sea el POM de Maven.");

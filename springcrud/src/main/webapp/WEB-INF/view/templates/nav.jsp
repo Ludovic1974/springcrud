@@ -16,8 +16,10 @@
 					aria-current="page">Portada</a></li>
 				<li class="nav-item"><a
 					href="${pageContext.request.contextPath}/book/list"
-					class="nav-link">Gestionar
-						libros</a></li>
+					class="nav-link">Gestionar libros</a></li>
+				<li class="nav-item"><a
+					href="${pageContext.request.contextPath}/category/list"
+					class="nav-link">Gestionar categorías</a></li>
 
 			</ul>
 			<form:form action="#" class="d-flex" method="POST">

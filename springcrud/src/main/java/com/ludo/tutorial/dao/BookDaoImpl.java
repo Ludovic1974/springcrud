@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.ludo.tutorial.model.Book;
 
 @Repository
-public class BookDaoImpl implements BookDao {
+public class BookDaoImpl implements ObjectDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -35,7 +35,7 @@ public class BookDaoImpl implements BookDao {
 	}
 
 	@Override
-	public void save(Book book) {
+	public void save(Object book) {
 		sessionFactory.getCurrentSession().saveOrUpdate(book);
 	}
 

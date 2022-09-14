@@ -2,19 +2,28 @@ package com.ludo.tutorial.service;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ludo.tutorial.dao.BookDao;
+import com.ludo.tutorial.dao.ObjectDao;
 import com.ludo.tutorial.model.Book;
+import com.ludo.tutorial.model.Category;
 import com.ludo.tutorial.other.Fecha;
 
 @Service
-public class ServicesImpl implements BookService {
+public class ServicesImpl implements BookService, CategoryService {
 
 	@Autowired
-	private BookDao bookDao;
+	@Qualifier("bookDaoImpl")
+	private ObjectDao bookDao;
+
+	@Autowired
+	@Qualifier("categoryDaoImpl")
+	private ObjectDao categoryDao;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -51,8 +60,49 @@ public class ServicesImpl implements BookService {
 	@Override
 	@Transactional
 	public Book getBook(long id) {
-		Book book = bookDao.get(id);
+		Book book = (Book) bookDao.get(id);
 		return book;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<?> listCategories() {
+		return categoryDao.list();
+	}
+
+	@Override
+	@Transactional
+	public long numCategories() {
+		return categoryDao.num();
+	}
+
+	@Override
+	@Transactional
+	public void save(@Valid Category category) {
+		if (category.getId() > 0) {
+			System.out.println("Actu de categoría");
+			category.setUpdatedAt(Fecha.getTimeStamp());
+		} else {
+			System.out.println("Creación de categoría");
+			category.setUpdatedAt(Fecha.getTimeStamp());
+			category.setCreatedAt(Fecha.getTimeStamp());
+		}
+		categoryDao.save(category);
+
+	}
+
+	@Override
+	@Transactional
+	public void deleteCategory(long id) {
+		categoryDao.delete(id);
+
+	}
+
+	@Override
+	@Transactional
+	public Category getCategory(long id) {
+		// TODO Auto-generated method stub
+		return (Category) categoryDao.get(id);
 	}
 
 }
