@@ -12,7 +12,9 @@
         <li class="nav-item">
           <a class="nav-link" href="${pageContext.request.contextPath}/book/list">Gestionar libros</a>
         </li>
-        
+        <li class="nav-item">
+          <a class="nav-link" href="${pageContext.request.contextPath}/category/list">Gestionar categorías</a>
+        </li>
         
       </ul>
       

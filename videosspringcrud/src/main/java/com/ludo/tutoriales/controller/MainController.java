@@ -26,6 +26,7 @@ public class MainController {
 		msj += "Versión 0.1.0 Añadir funciones para editar registros de libros<br/>";
 		msj += "Versión 0.1.1 Modificación del modelo Book: Lo extenderemos con el modelo DateColumns<br/>";
 		msj += "Versión 0.1.2 Creación del modelo BookDetails y de la relación con Book. Configuración de la validación.<br/>";
+		msj += "Versión 0.1.3 Creación del modelo Category y de su formulario.<br/>";
 
 		mv.addObject("descripcion_larga", msj);
 

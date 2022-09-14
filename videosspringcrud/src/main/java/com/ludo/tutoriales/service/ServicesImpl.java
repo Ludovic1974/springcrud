@@ -2,31 +2,38 @@ package com.ludo.tutoriales.service;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ludo.tutoriales.dao.BookDao;
+import com.ludo.tutoriales.dao.ObjectDao;
 import com.ludo.tutoriales.model.Book;
+import com.ludo.tutoriales.model.Category;
 import com.ludo.tutoriales.other.Fecha;
 
 @Service
-public class ServicesImpl implements BookService {
+public class ServicesImpl implements BookService, CategoryService {
 
 	@Autowired
-	private BookDao bookDao;
+	@Qualifier("bookDaoImpl")
+	private ObjectDao bookDao;
+
+	@Autowired
+	@Qualifier("categoryDaoImpl")
+	private ObjectDao categoryDao;
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<?> listBooks() {
-		// TODO Auto-generated method stub
 		return bookDao.list();
 	}
 
 	@Override
 	@Transactional
 	public Long numBooks() {
-		// TODO Auto-generated method stub
 		return bookDao.num();
 	}
 
@@ -55,7 +62,48 @@ public class ServicesImpl implements BookService {
 	@Override
 	@Transactional
 	public Book getBook(long id) {
-		return bookDao.get(id);
+		return (Book) bookDao.get(id);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<?> listCategories() {
+		return categoryDao.list();
+	}
+
+	@Override
+	@Transactional
+	public Long numCategories() {
+		return categoryDao.num();
+	}
+
+	@Override
+	@Transactional
+	public void save(@Valid Category category) {
+		if (category.getId() > 0) {
+			System.out.println("Actu de categoría");
+			category.setUpdatedAt(Fecha.getTimeStamp());
+		} else {
+			System.out.println("Creación de categoría");
+			category.setUpdatedAt(Fecha.getTimeStamp());
+			category.setCreatedAt(Fecha.getTimeStamp());
+		}
+		categoryDao.save(category);
+
+	}
+
+	@Override
+	@Transactional
+	public void deleteCategory(long id) {
+		categoryDao.delete(id);
+
+	}
+
+	@Override
+	@Transactional
+	public Category getCategory(long id) {
+		// TODO Auto-generated method stub
+		return (Category) categoryDao.get(id);
 	}
 
 }

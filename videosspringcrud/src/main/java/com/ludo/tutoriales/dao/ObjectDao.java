@@ -2,16 +2,14 @@ package com.ludo.tutoriales.dao;
 
 import java.util.List;
 
-import com.ludo.tutoriales.model.Book;
-
-public interface BookDao {
+public interface ObjectDao {
 	List<?> list();
 
 	Long num();
 
-	void save(Book book);
+	void save(Object obj);
 
 	void delete(long id);
 
-	Book get(long id);
+	Object get(long id);
 }

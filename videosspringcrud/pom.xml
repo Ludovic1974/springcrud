@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutoriales</groupId>
 	<artifactId>videosspringcrud</artifactId>
-	<version>0.0.12-bookDetails</version>
+	<version>0.0.13-bookCategory</version>
 	<packaging>war</packaging>
 
-	<name>CRUD Book Model - Book's details</name>
+	<name>CRUD Book Model - Book's category</name>
 	<!-- FIXME change it to the project's website -->
 	<url>https://www.ludoviclaisnez.com</url>
 
