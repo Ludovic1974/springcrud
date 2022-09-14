@@ -28,10 +28,18 @@ public class MainController {
 		msj += "Versión 0.1.4 Modificación del formulario Book para asignar categorías a los libros.<br/>";
 		msj += "Versión 0.1.5 Modificación de la estructura de interfaces.<br/>";
 		msj += "Versión 0.1.6 Configuración completa del modelo User.<br/>";
+		msj += "Versión 0.1.7 Activación de la opción active y modificación en el formulario User.<br/>";
+		/*
+		 * Se han llevado a cabo ciertas modificaciones al nivel de la NAV, de la
+		 * variable menu de cada controlador. Además en el formulario User, he bloqueado
+		 * la opción para modificar el username una vez creada y he añadido la columna
+		 * updated_at
+		 */
 		mv.addObject("descripcion",
 				"En esta sección, aprenderemos cómo crear un CRUD usando Spring MVC e Hibernate ORM framework "
 						+ "sin ningún fichero de configuración XML que no sea el POM de Maven.");
 		mv.addObject("descripcion_larga", msj);
+		mv.addObject("menu", "index");
 		mv.setViewName("index");
 
 		return mv;

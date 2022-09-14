@@ -10,28 +10,15 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item"><a
-					href="${pageContext.request.contextPath}/index"
-					class="nav-link ${menu == 'index' ? 'active' : ''}"
-					aria-current="page">Portada</a></li>
-				<li class="nav-item"><a
-					href="${pageContext.request.contextPath}/book/list"
-					class="nav-link">Gestionar libros</a></li>
-				<li class="nav-item"><a
-					href="${pageContext.request.contextPath}/category/list"
-					class="nav-link">Gestionar categorías</a></li>
-							<li class="nav-item"><a
-					href="${pageContext.request.contextPath}/user/list"
-					class="nav-link ${menu == 'lista_usuarios' ? 'active' : ''}"">Gestionar
-						usuarios</a></li>
-
+				<li class="nav-item"><a	href="${pageContext.request.contextPath}/index" class="nav-link ${menu == 'index' ? 'active' : ''}">Portada</a></li>
+				<li class="nav-item"><a	href="${pageContext.request.contextPath}/book/list"	class="nav-link ${menu == 'lista_libros' ? 'active' : ''}">Gestionar libros</a></li>
+				<li class="nav-item"><a	href="${pageContext.request.contextPath}/category/list"	class="nav-link ${menu == 'lista_categorias' ? 'active' : ''}">Gestionar categorías</a></li>
+				<li class="nav-item"><a	href="${pageContext.request.contextPath}/user/list"	class="nav-link ${menu == 'lista_usuarios' ? 'active' : ''}"">Gestionar	usuarios</a></li>
 			</ul>
 			<form:form action="#" class="d-flex" method="POST">
 				<input type="submit" class="btn btn-outline-danger"
 					value="Cerrar sesión" />
 			</form:form>
-
-
 		</div>
 	</div>
 </nav>

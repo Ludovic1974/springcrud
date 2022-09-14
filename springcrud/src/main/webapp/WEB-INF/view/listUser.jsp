@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,16 @@
 						<form:form action="save" method="post" modelAttribute="user">
 							<div class="mb-3">
 								<form:label path="username" cssClass="form-label">Nombre de perfil</form:label>
-								<form:input path="username" cssClass="form-control" />
+									<c:choose>
+									<c:when test="${param.username == null}">
+										<form:input path="username" cssClass="form-control" />
+										
+									</c:when>
+									<c:otherwise>
+										<form:input path="username" cssClass="form-control"	disabled="true" />
+										<form:hidden path="username" />
+									</c:otherwise>
+								</c:choose>
 								<form:errors path="username" cssClass="error" />
 								<form:hidden path="enabled" />
 							</div>
@@ -61,6 +71,7 @@
 								<th>Nombre</th>
 								<th>Apellido</th>
 								<th>Email</th>
+									<th>Modificado</th>	
 								<th>Activado</th>
 								<th colspan="2">Acciones</th>
 							</tr>
@@ -79,6 +90,8 @@
 										<td>${user.name}</td>
 										<td>${user.surname}</td>
 										<td>${user.email}</td>
+											<td><fmt:formatDate type="both" value="${user.updatedAt}"
+												dateStyle="long" timeStyle="short" /></td>	
 										<td>${user.enabled==true ? "Activado":"Desactivado"}</td>
 
 										<td><a href="${edit}" title="Actualizar ${user.name}">

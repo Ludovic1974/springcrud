@@ -71,19 +71,16 @@ public class Book extends DateColumns {
 	}
 
 	public Book() {
-		System.out.println("ese");
 	}
 
 	public Book(Date createdAt, Date updatedAt) {
 		super(createdAt, updatedAt);
-		System.out.println("este");
 	}
 
 	public Book(Date createdAt, Date updatedAt, long id,
 			@Size(max = 225, min = 1, message = "{book.title.invalid}") @NotEmpty(message = "{book.value.required}") String title,
 			@Size(max = 225, min = 1, message = "{book.author.invalid}") @NotEmpty(message = "{book.value.required}") String author) {
 		super(createdAt, updatedAt);
-		System.out.println("aquel");
 		this.id = id;
 		this.title = title;
 		this.author = author;

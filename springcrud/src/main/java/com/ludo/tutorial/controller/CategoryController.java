@@ -34,6 +34,7 @@ public class CategoryController {
 
 	private void addAttributes(Model model, String ttl, String msj) {
 		model.addAttribute("categories", categoryService.listCategories());
+		model.addAttribute("menu", "lista_categorias");
 		model.addAttribute("how_many", categoryService.numCategories());
 		model.addAttribute("titulo", ttl);
 		model.addAttribute("descripcion", msj);
