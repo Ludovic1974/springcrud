@@ -61,7 +61,7 @@ public class UserDaoImpl implements UserDao {
 	public User getWithBooks(String username) {
 		User user = null;
 		user = (User) sessionFactory.getCurrentSession().createQuery(
-				"SELECT user FROM User user inner join fetch user.books books where user.username = :username ORDER BY books.title asc")
+				"SELECT user FROM User user left join fetch user.books books where user.username = :username ORDER BY books.title asc")
 				.setParameter("username", username).uniqueResult();
 
 		if (user == null) {
