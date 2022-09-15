@@ -120,6 +120,12 @@ public class ServicesImpl implements BookService, CategoryService, UserService {
 
 	@Override
 	@Transactional
+	public User getUserWithBooks(String username) {
+		return (User) userDao.getWithBooks(username);
+	}
+
+	@Override
+	@Transactional
 	public void save(User user) {
 		User copiaUser = null;
 		// Si se trata de una creación de usuario

@@ -10,6 +10,8 @@ public interface UserService {
 
 	User getUser(String username);
 
+	User getUserWithBooks(String username);
+
 	void save(@Valid User user);
 
 	void deleteUser(String username);

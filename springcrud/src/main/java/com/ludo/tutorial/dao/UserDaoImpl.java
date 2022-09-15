@@ -58,6 +58,19 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
+	public User getWithBooks(String username) {
+		User user = null;
+		user = (User) sessionFactory.getCurrentSession().createQuery(
+				"SELECT user FROM User user inner join fetch user.books books where user.username = :username ORDER BY books.title asc")
+				.setParameter("username", username).uniqueResult();
+
+		if (user == null) {
+			user = sessionFactory.getCurrentSession().find(User.class, username);
+		}
+		return user;
+	}
+
+	@Override
 	public void loanBooks(User user) {
 		// Qué lista tenemos ?
 		// System.out.println(user.getBooks());
@@ -83,7 +96,6 @@ public class UserDaoImpl implements UserDao {
 		sessionFactory.getCurrentSession().merge(user);
 		// Sincronizamos la BDD
 		sessionFactory.getCurrentSession().flush();
-
 	}
 
 }

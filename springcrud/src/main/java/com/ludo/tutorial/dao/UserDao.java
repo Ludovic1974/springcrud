@@ -11,4 +11,7 @@ public interface UserDao extends ObjectDao {
 	Object get(String username);
 
 	void loanBooks(@Valid User user);
+
+	Object getWithBooks(String username);
+
 }
