@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.1.6-User model</version>
+	<version>0.1.7-global review</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - User Model</name>
+	<name>Crud Book Model - global review</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 

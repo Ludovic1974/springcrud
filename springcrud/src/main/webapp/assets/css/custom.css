@@ -2,3 +2,10 @@
 .error{
 	color: RED; 
 }
+
+.asterix{
+	color: RED; 
+}
+.z-index-negative{
+	z-index: -1; 
+}
