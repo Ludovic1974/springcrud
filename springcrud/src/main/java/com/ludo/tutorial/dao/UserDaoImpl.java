@@ -39,6 +39,16 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
+	public List<?> ListWithBooks() {
+		String sentencia;
+		TypedQuery<?> query;
+		sentencia = "SELECT distinct user from User user left outer join fetch user.books books ORDER BY user.username";
+		query = sessionFactory.getCurrentSession().createQuery(sentencia);
+		return query.getResultList();
+
+	}
+
+	@Override
 	public void delete(String username) {
 		User savedUserEntity = sessionFactory.getCurrentSession().find(User.class, username);
 		sessionFactory.getCurrentSession().remove(savedUserEntity);
@@ -61,7 +71,7 @@ public class UserDaoImpl implements UserDao {
 	public User getWithBooks(String username) {
 		User user = null;
 		user = (User) sessionFactory.getCurrentSession().createQuery(
-				"SELECT user FROM User user inner join fetch user.books books where user.username = :username ORDER BY books.title asc")
+				"SELECT user FROM User user left join fetch user.books books where user.username = :username ORDER BY books.title asc")
 				.setParameter("username", username).uniqueResult();
 
 		if (user == null) {

@@ -22,4 +22,6 @@ public interface UserService {
 
 	void loanBooks(@Valid User user);
 
+	List<?> ListWithBooks();
+
 }
