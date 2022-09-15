@@ -18,4 +18,6 @@ public interface UserService {
 
 	long numUsers();
 
+	void loanBooks(@Valid User user);
+
 }

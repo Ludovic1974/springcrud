@@ -163,4 +163,11 @@ public class ServicesImpl implements BookService, CategoryService, UserService {
 		return userDao.num();
 	}
 
+	@Override
+	@Transactional
+	public void loanBooks(@Valid User user) {
+		userDao.loanBooks(user);
+
+	}
+
 }

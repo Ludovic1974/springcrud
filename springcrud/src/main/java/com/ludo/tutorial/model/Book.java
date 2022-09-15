@@ -1,6 +1,8 @@
 package com.ludo.tutorial.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -70,7 +73,23 @@ public class Book extends DateColumns {
 		this.category = category;
 	}
 
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "books")
+	private List<User> users = new ArrayList<>();
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
 	public Book() {
+	}
+
+	/* Importante para la validación de préstamos */
+	public Book(String title) {
+		this.title = title;
 	}
 
 	public Book(Date createdAt, Date updatedAt) {
