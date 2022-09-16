@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ludo.tutoriales.model.Book;
 import com.ludo.tutoriales.service.BookService;
+import com.ludo.tutoriales.service.CategoryService;
 
 @Controller
 @RequestMapping(value = "/book")
@@ -22,6 +23,9 @@ public class BookController {
 
 	@Autowired
 	private BookService bookService;
+
+	@Autowired
+	private CategoryService categoryService;
 
 	@GetMapping("/list")
 	public ModelAndView listBooks() {
@@ -33,7 +37,7 @@ public class BookController {
 		mv.addObject("titulo_form", "Formulario de libros");
 		mv.addObject("descripcion", "En esta sección, después de haber creado instancias de libros, los listamos.");
 		mv.addObject("descripcion_form", "Con este formulario, creamos nuevos libros.");
-
+		mv.addObject("categories", categoryService.listCategories());
 		mv.setViewName("listBook");
 
 		return mv;
@@ -73,6 +77,7 @@ public class BookController {
 		model.addAttribute("descripcion",
 				"En esta sección, después de haber creado instancias de libros, los listamos.");
 		model.addAttribute("descripcion_form", "Con este formulario, creamos nuevos libros.");
+		model.addAttribute("categories", categoryService.listCategories());
 	}
 
 }

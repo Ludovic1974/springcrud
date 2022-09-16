@@ -26,7 +26,9 @@ public class MainController {
 		msj += "Versión 0.1.0 Añadir funciones para editar registros de libros<br/>";
 		msj += "Versión 0.1.1 Modificación del modelo Book: Lo extenderemos con el modelo DateColumns<br/>";
 		msj += "Versión 0.1.2 Creación del modelo BookDetails y de la relación con Book. Configuración de la validación.<br/>";
-
+		msj += "Versión 0.1.3 Creación del modelo Category y del formulario.<br/>";
+		msj += "Versión 0.1.4 Modificación del formulario Book para asignar categorías a los libros.<br/>";
+		msj += "Versión 0.1.5 Modificación de las interfaces del repositorio para respetar el principio de sustitución de Liskov.<br/>";
 		mv.addObject("descripcion_larga", msj);
 
 		mv.setViewName("index");
