@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
@@ -45,6 +47,22 @@ public class Book extends DateColumns {
 		this.bookDetails = bookDetails;
 	}
 	// FIN RELACION 1A1 CON BOOKDETAILS
+
+	// RELACION 1AVS CON CATEGORY
+	@ManyToOne
+	@JoinColumn(name = "cat_id")
+	@Valid
+	private Category category;
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	// FIN RELACION 1AVS CON CATEGORY
 
 	public Book(Date createdAt, Date updatedAt, long id,
 			@Size(max = 225, min = 1, message = "{book.title.invalid}") @NotEmpty(message = "{book.title.required}") String title,

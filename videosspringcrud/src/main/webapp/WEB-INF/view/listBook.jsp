@@ -39,6 +39,13 @@
 									onmouseover="pinta('author')" onmouseout="vuelve('author')" />
 								<form:errors path="author" cssClass="errors" />
 							</div>
+							
+							<div class="mb-3">
+								<label for="category" class="form-label">Categoría<span
+									class="asterix">*</span></label>
+								<form:select id="category" path="category" cssClass="form-control" items="${categories}" itemValue="name" itemLabel="name" onmouseover="pinta('category')" onmouseout="vuelve('category')" />
+								<form:errors path="category" cssClass="error" />
+							</div>
 
 							<div class="mb-3">
 								<form:label path="bookDetails.publicationYear"
@@ -90,6 +97,7 @@
 							<th>Título</th>
 							<th>Autor</th>
 							<th>Modificado</th>
+							<th>Categoría</th>
 							<th>Publicado</th>
 							<th>Comprado</th>
 							<th>Páginas</th>
@@ -109,6 +117,7 @@
 									<td>${book.author}</td>
 									<td><fmt:formatDate value="${book.updatedAt}" type="both"
 											dateStyle="long" timeStyle="short" /></td>
+									<td>${book.category.name}</td>
 									<td>${book.bookDetails.publicationYear}</td>
 									<td>${book.bookDetails.purchaseYear}</td>
 									<td>${book.bookDetails.pageNumber}</td>
@@ -122,7 +131,7 @@
 						</c:if>
 						<c:if test="${how_many == 0}">
 							<tr>
-								<td colspan="8">La tabla no contiene registros</td>
+								<td colspan="9">La tabla no contiene registros</td>
 							</tr>
 						</c:if>
 					</table>
