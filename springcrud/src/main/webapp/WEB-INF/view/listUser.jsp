@@ -19,7 +19,8 @@
 						<fieldset>
 							<legend>${titulo}</legend>
 							<div class="mb-3">
-								<form:label path="username" cssClass="form-label">Nombre de perfil</form:label>
+								<form:label path="username" cssClass="form-label">Nombre de perfil <span
+										class="asterix">*</span></form:label>
 								<c:choose>
 									<c:when test="${param.username == null}">
 										<form:input path="username" cssClass="form-control" />
@@ -45,17 +46,23 @@
 								<form:errors path="surname" cssClass="error" />
 							</div>
 							<div class="mb-3">
-								<form:label path="email" cssClass="form-label">Email</form:label>
+								<form:label path="email" cssClass="form-label">Email <span
+										class="asterix">*</span></form:label>
 								<form:input path="email" cssClass="form-control" />
 								<form:errors path="email" cssClass="error" />
 							</div>
 							<div class="mb-3">
-								<form:label path="password" cssClass="form-label">Contraseña</form:label>
+								<form:label path="password" cssClass="form-label">Contraseña <span
+										class="asterix">*</span></form:label>
 								<form:password path="password" cssClass="form-control" />
 								<form:errors path="password" cssClass="error" />
+								<c:if test="${equalPasswords != null }">
+								<span class="error">${equalPasswords}</span>
+								</c:if>
 							</div>
 							<div class="mb-3">
-								<form:label path="confirmPassword" cssClass="form-label">Repetir contraseña</form:label>
+								<form:label path="confirmPassword" cssClass="form-label">Repetir contraseña <span
+										class="asterix">*</span></form:label>
 								<form:password path="confirmPassword" cssClass="form-control" />
 								<form:errors path="confirmPassword" cssClass="error" />
 							</div>

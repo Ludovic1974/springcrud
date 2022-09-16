@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.2.0-lazy-vs-eager-p2</version>
+	<version>0.2.1-password</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Fetch Lazy</name>
+	<name>Crud Book Model - Password valid</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 

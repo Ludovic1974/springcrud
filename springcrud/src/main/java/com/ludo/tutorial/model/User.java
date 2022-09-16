@@ -17,11 +17,15 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.ludo.tutorial.other.EqualPasswords;
+
 @Entity
 @Table(name = "user")
+@EqualPasswords(message = "{user.passwords.not.igual}")
 public class User extends DateColumns {
 	@Id
 	@Column(name = "username")
+	@NotEmpty(message = "{username.value.required}")
 	private String username;
 
 	@Column(name = "name")
@@ -42,6 +46,7 @@ public class User extends DateColumns {
 
 	@Column(name = "email", length = 50)
 	@Email(message = "{user.email.invalid}")
+	@NotEmpty(message = "{email.value.required}")
 	// @EmailExist(email = "email") //Probando con el email repetito //no funciona
 	private String email;
 
