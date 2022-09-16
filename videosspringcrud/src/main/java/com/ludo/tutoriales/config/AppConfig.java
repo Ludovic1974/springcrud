@@ -27,6 +27,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.ludo.tutoriales.model.Book;
 import com.ludo.tutoriales.model.BookDetails;
+import com.ludo.tutoriales.model.Category;
+import com.ludo.tutoriales.model.User;
 
 @Configuration
 @EnableTransactionManagement
@@ -61,7 +63,7 @@ public class AppConfig {
 		props.put(C3P0_MAX_STATEMENTS, env.getProperty("hibernate.c3p0.max_statements"));
 
 		factoryBean.setHibernateProperties(props);
-		factoryBean.setAnnotatedClasses(new Class[] { Book.class, BookDetails.class });
+		factoryBean.setAnnotatedClasses(new Class[] { Book.class, BookDetails.class, Category.class, User.class });
 
 		return factoryBean;
 	}
