@@ -57,7 +57,7 @@ public class UserController {
 			System.out.println("EqualPasswords.user: " + result.getFieldErrors());
 			System.out.println("Todas errores: " + result.getAllErrors().get(0).getDefaultMessage());
 			for (int i = 0; i < result.getAllErrors().size(); i++) {
-				if (result.getAllErrors().get(i).getDefaultMessage().equals("Las contraseñas no son iguales")) {
+				if (result.getAllErrors().get(i).getDefaultMessage().equals("{user.passwords.not.igual}")) {
 					equalPasswords = "Las contraseñas no son iguales";
 					break;
 				}
