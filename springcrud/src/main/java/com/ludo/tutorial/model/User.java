@@ -13,42 +13,29 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
-import com.ludo.tutorial.other.EqualFields;
+import com.ludo.tutorial.dto.UserDto;
 
 @Entity
 @Table(name = "user")
-/* Indicando las propiedades en la anotación */
-@EqualFields(baseField = "password", matchField = "confirmPassword", message = "{user.passwords.not.igual}")
 public class User extends DateColumns {
 	@Id
 	@Column(name = "username")
-	@NotEmpty(message = "{username.value.required}")
 	private String username;
 
 	@Column(name = "name")
-	@Size(max = 50, min = 3, message = "{user.name.invalid}")
 	private String name;
 
 	@Column(name = "surname")
-	@Size(max = 50, min = 3, message = "{user.surname.invalid}")
 	private String surname;
 
 	@Column(name = "password")
-	@Size(max = 225, min = 3, message = "{user.password.invalid}")
-	@NotEmpty(message = "{password.value.required}")
 	private String password;
 
 	@Column(name = "confirm_password")
 	private String confirmPassword;
 
 	@Column(name = "email", length = 50)
-	@Email(message = "{user.email.invalid}")
-	@NotEmpty(message = "{email.value.required}")
-	// @EmailExist(email = "email") //Probando con el email repetito //no funciona
 	private String email;
 
 	@Column(name = "enabled")
@@ -71,16 +58,24 @@ public class User extends DateColumns {
 	public User() {
 	}
 
+	public User(UserDto copy) {
+		this.setUsername(copy.getUsername());
+		this.setName(copy.getName());
+		this.setSurname(copy.getSurname());
+		this.setEnabled(copy.isEnabled());
+		this.setEmail(copy.getEmail());
+		this.setPassword(copy.getPassword());
+		this.setConfirmPassword(copy.getConfirmPassword());
+		this.setBooks(copy.getBooks());
+	}
+
 	public User(Date createdAt, Date updatedAt) {
 		super(createdAt, updatedAt);
 
 	}
 
-	public User(Date createdAt, Date updatedAt, String username,
-			@Size(max = 50, min = 3, message = "{user.name.invalid}") String name,
-			@Size(max = 50, min = 3, message = "{user.surname.invalid}") String surname,
-			@Size(max = 225, min = 3, message = "{user.password.invalid}") @NotEmpty(message = "{password.value.required}") String password,
-			String confirmPassword, @Email(message = "{user.email.invalid}") String email, boolean enabled) {
+	public User(Date createdAt, Date updatedAt, String username, String name, String surname, String password,
+			String confirmPassword, String email, boolean enabled) {
 		super(createdAt, updatedAt);
 		this.username = username;
 		this.name = name;
@@ -91,10 +86,8 @@ public class User extends DateColumns {
 		this.enabled = enabled;
 	}
 
-	public User(String username, @Size(max = 50, min = 3, message = "{user.name.invalid}") String name,
-			@Size(max = 50, min = 3, message = "{user.surname.invalid}") String surname,
-			@Size(max = 225, min = 3, message = "{user.password.invalid}") @NotEmpty(message = "{password.value.required}") String password,
-			String confirmPassword, @Email(message = "{user.email.invalid}") String email, boolean enabled) {
+	public User(String username, String name, String surname, String password, String confirmPassword, String email,
+			boolean enabled) {
 		this.username = username;
 		this.name = name;
 		this.surname = surname;

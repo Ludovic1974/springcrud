@@ -21,6 +21,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void save(Object user) {
+
 		if (get(((User) user).getUsername()) == null) {
 			sessionFactory.getCurrentSession().persist(user);
 		} else {
@@ -35,6 +36,15 @@ public class UserDaoImpl implements UserDao {
 		TypedQuery<?> query;
 		sentencia = "from User u ORDER BY u.username";
 		query = sessionFactory.getCurrentSession().createQuery(sentencia);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<?> findByEmail(String email) {
+		String sentencia;
+		TypedQuery<?> query;
+		sentencia = "SELECT user FROM User user where user.email = :email";
+		query = sessionFactory.getCurrentSession().createQuery(sentencia).setParameter("email", email);
 		return query.getResultList();
 	}
 

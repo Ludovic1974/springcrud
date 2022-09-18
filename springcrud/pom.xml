@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.2.2-doble-field</version>
+	<version>0.2.3-username-unique</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Validating two equal values in the form</name>
+	<name>Crud Book Model - Validating username value - Must be unique</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 

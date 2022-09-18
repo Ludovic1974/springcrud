@@ -41,6 +41,7 @@ public class MainController {
 		msj += "Versión 0.2.0 Listar los libros prestados a UNOS usuario en modo Lazy.<br/>";
 		msj += "Versión 0.2.1 Validación de la contraseña. Los dos campos deben de ser iguales.<br/>";
 		msj += "Versión 0.2.2 Validación de dos campos del formulario. Deben de ser iguales.<br/>";
+		msj += "Versión 0.2.3-test Intento de validar el campo Username para que sea único.<br/>";
 		mv.addObject("descripcion",
 				"En esta sección, aprenderemos cómo crear un CRUD usando Spring MVC e Hibernate ORM framework "
 						+ "sin ningún fichero de configuración XML que no sea el POM de Maven.");
