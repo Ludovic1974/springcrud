@@ -24,6 +24,7 @@ public class UserDaoImpl implements UserDao {
 			sessionFactory.getCurrentSession().merge(user);
 		}
 
+
 	}
 
 	@Override
