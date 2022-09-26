@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -127,10 +128,30 @@ public class ServicesImpl implements BookService, CategoryService, UserService {
 	@Override
 	@Transactional
 	public void save(@Valid User user) {
-		user.setCreatedAt(Fecha.getTimeStamp());
-		user.setUpdatedAt(Fecha.getTimeStamp());
-		user.setEnabled(true);
-		userDao.save(user);
+		User copiaUser = null;
+		if (userDao.get(user.getUsername()) == null) {
+			copiaUser = new User();
+			copiaUser.setEnabled(true);
+			copiaUser.setCreatedAt(Fecha.getTimeStamp());
+		} else {
+			copiaUser = userDao.get(user.getUsername());
+			copiaUser.setEnabled(user.isEnabled());
+		}
+		copiaUser.setUpdatedAt(Fecha.getTimeStamp());
+		copiaUser.setUsername(user.getUsername());
+		// email
+		copiaUser.setEmail(user.getEmail().toLowerCase());
+		// surname
+		copiaUser.setSurname(user.getSurname().toUpperCase());
+		// name
+		copiaUser.setName(user.getName().substring(0, 1).toUpperCase()
+				+ user.getName().substring(1, user.getName().length()).toLowerCase());
+		// password
+		String encoded = new BCryptPasswordEncoder().encode(user.getPassword());
+		copiaUser.setPassword(encoded);
+		copiaUser.setConfirmPassword(encoded);
+
+		userDao.save(copiaUser);
 	}
 
 	@Override

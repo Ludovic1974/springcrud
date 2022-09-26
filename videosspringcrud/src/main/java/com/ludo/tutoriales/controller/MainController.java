@@ -30,8 +30,14 @@ public class MainController {
 		msj += "Versión 0.1.4 Modificación del formulario Book para asignar categorías a los libros.<br/>";
 		msj += "Versión 0.1.5 Modificación de las interfaces del repositorio para respetar el principio de sustitución de Liskov.<br/>";
 		msj += "Versión 0.1.6 Creación del model User.<br/>";
+		msj += "Versión 0.1.7 Revisión global.<br/>";
+		/*
+		 * En la versión 0.1.7, se han llevado a cabo ciertas modificaciones al nivel de
+		 * la NAV, de la variable menu de cada controlador. Además en el formulario
+		 * User, he bloqueado la opción para modificar el username una vez creada.
+		 */
 		mv.addObject("descripcion_larga", msj);
-
+		mv.addObject("menu", "portada");
 		mv.setViewName("index");
 
 		return mv;

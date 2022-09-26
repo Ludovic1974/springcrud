@@ -37,6 +37,7 @@ public class CategoryController {
 		model.addAttribute("how_many", categoryService.numCategories());
 		model.addAttribute("titulo", ttl);
 		model.addAttribute("descripcion", msj);
+		model.addAttribute("menu", "lista_categorias");
 	}
 
 	@PostMapping("/save")

@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutoriales</groupId>
 	<artifactId>videosspringcrud</artifactId>
-	<version>0.1.6-User model</version>
+	<version>0.1.7-revision-global</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - User Model</name>
+	<name>Crud Book Model - Global revision</name>
 	<!-- FIXME change it to the project's website -->
 	<url>https://www.ludoviclaisnez.com</url>
 
@@ -115,6 +115,14 @@
 			<artifactId>spring-data-jpa</artifactId>
 			<version>2.7.2</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		    <version>5.7.3</version>
+		</dependency>
+
 
 
 	</dependencies>

@@ -35,6 +35,7 @@ public class UserController {
 		model.addAttribute("titulo", "Formulario usuarios");
 		model.addAttribute("descripcion",
 				"En esta sección, después de haber creado instancias de usuarios, las listamos.");
+		model.addAttribute("menu", "lista_usuarios");
 	}
 
 	@PostMapping("/save")

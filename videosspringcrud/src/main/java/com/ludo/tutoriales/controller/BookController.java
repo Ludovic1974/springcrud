@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.ludo.tutoriales.model.Book;
 import com.ludo.tutoriales.service.BookService;
@@ -28,19 +27,22 @@ public class BookController {
 	private CategoryService categoryService;
 
 	@GetMapping("/list")
-	public ModelAndView listBooks() {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("book", new Book());
-		mv.addObject("books", bookService.listBooks());
-		mv.addObject("how_many", bookService.numBooks());
-		mv.addObject("titulo", "Lista de libros");
-		mv.addObject("titulo_form", "Formulario de libros");
-		mv.addObject("descripcion", "En esta sección, después de haber creado instancias de libros, los listamos.");
-		mv.addObject("descripcion_form", "Con este formulario, creamos nuevos libros.");
-		mv.addObject("categories", categoryService.listCategories());
-		mv.setViewName("listBook");
+	public String listBooks(Model model) {
+		addAttributes(model);
+		model.addAttribute("book", new Book());
+		return "listBook";
+	}
 
-		return mv;
+	private void addAttributes(Model model) {
+		model.addAttribute("books", bookService.listBooks());
+		model.addAttribute("how_many", bookService.numBooks());
+		model.addAttribute("titulo", "Lista de libros");
+		model.addAttribute("titulo_form", "Formulario de libros");
+		model.addAttribute("descripcion",
+				"En esta sección, después de haber creado instancias de libros, los listamos.");
+		model.addAttribute("descripcion_form", "Con este formulario, creamos nuevos libros.");
+		model.addAttribute("categories", categoryService.listCategories());
+		model.addAttribute("menu", "lista_libros");
 	}
 
 	@PostMapping("/save")
@@ -67,17 +69,6 @@ public class BookController {
 		model.addAttribute(book);
 		addAttributes(model);
 		return "listBook";
-	}
-
-	private void addAttributes(Model model) {
-		model.addAttribute("books", bookService.listBooks());
-		model.addAttribute("how_many", bookService.numBooks());
-		model.addAttribute("titulo", "Lista de libros");
-		model.addAttribute("titulo_form", "Formulario de libros");
-		model.addAttribute("descripcion",
-				"En esta sección, después de haber creado instancias de libros, los listamos.");
-		model.addAttribute("descripcion_form", "Con este formulario, creamos nuevos libros.");
-		model.addAttribute("categories", categoryService.listCategories());
 	}
 
 }

@@ -22,7 +22,16 @@
 
 							<div class="mb-3">
 								<form:label path="username" cssClass="form-label">Nombre de perfil</form:label>
-								<form:input path="username" cssClass="form-control" />
+								<c:choose>
+									<c:when test="${param.username == null}">
+										<form:input path="username" cssClass="form-control" />
+									</c:when>
+									<c:otherwise>
+										<form:input path="username" cssClass="form-control" disabled="true"/>
+										<form:hidden path="username" />
+									</c:otherwise>										
+								</c:choose>
+								
 								<form:errors path="username" cssClass="error" />
 								<form:hidden path="enabled" />
 							</div>
