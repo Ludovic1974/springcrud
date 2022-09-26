@@ -1,6 +1,8 @@
 package com.ludo.tutoriales.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +11,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
@@ -46,6 +51,36 @@ public class Book extends DateColumns {
 	}
 	// FIN RELACION 1A1 CON BOOKDETAILS
 
+	// RELACION 1AVS CON CATEGORY
+	@ManyToOne
+	@JoinColumn(name = "cat_id")
+	@Valid
+	private Category category;
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	// FIN RELACION 1AVS CON CATEGORY
+
+	// RELACION VSAVS CON USER
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "books")
+	private List<User> users = new ArrayList<>();
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	// FIN RELACION VSAVS CON USER
+
 	public Book(Date createdAt, Date updatedAt, long id,
 			@Size(max = 225, min = 1, message = "{book.title.invalid}") @NotEmpty(message = "{book.title.required}") String title,
 			@Size(max = 225, min = 1, message = "{book.author.invalid}") @NotEmpty(message = "{book.author.required}") String author) {
@@ -69,6 +104,10 @@ public class Book extends DateColumns {
 
 	public Book() {
 
+	}
+
+	public Book(String title) {
+		this.title = title;
 	}
 
 	public long getId() {
@@ -98,7 +137,7 @@ public class Book extends DateColumns {
 	@Override
 	public String toString() {
 		return String.format("Book [getId()=%s, getTitle()=%s, getAuthor()=%s, getCreatedAt()=%s, getUpdatedAt()=%s]",
-				getId(), getTitle(), getAuthor());
+				getId(), getTitle(), getAuthor(), getCreatedAt(), getUpdatedAt());
 	}
 
 }
