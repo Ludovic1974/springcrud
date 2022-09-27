@@ -7,13 +7,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/">Portada</a>
+          <a class="nav-link ${menu == 'portada' ? 'active' : ''}" aria-current="page" href="${pageContext.request.contextPath}/">Portada</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${pageContext.request.contextPath}/book/list">Gestionar libros</a>
+          <a class="nav-link ${menu == 'lista_libros' ? 'active' : ''}" href="${pageContext.request.contextPath}/book/list">Gestionar libros</a>
         </li>
+        <li class="nav-item"><a
+					href="${pageContext.request.contextPath}/category/list"
+					class="nav-link ${menu == 'lista_categorias' ? 'active' : ''}">Gestionar categorías</a></li>
         
-        
+          <li class="nav-item"><a
+					href="${pageContext.request.contextPath}/user/list"
+					class="nav-link ${menu == 'lista_usuarios' ? 'active' : ''}">Gestionar usuarios</a></li>
       </ul>
       
     </div>
