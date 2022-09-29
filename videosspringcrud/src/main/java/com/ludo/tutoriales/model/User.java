@@ -47,6 +47,7 @@ public class User extends DateColumns {
 	@Column
 	private boolean enabled;
 
+	// RELACION VSAVS CON BOOK
 	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH }, fetch = FetchType.EAGER)
 	@JoinTable(name = "user_book", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "book_id") })
@@ -59,6 +60,7 @@ public class User extends DateColumns {
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
+	// FIN RELACION VSAVS CON BOOK
 
 	public User(@NotEmpty(message = "{user.username.required}") String username,
 			@Size(max = 50, min = 3, message = "{user.name.invalid}") String name,

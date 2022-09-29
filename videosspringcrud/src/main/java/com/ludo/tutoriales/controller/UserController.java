@@ -70,10 +70,10 @@ public class UserController {
 	@GetMapping("/loan_books")
 	public String loanBooksUser(@RequestParam("username") String username, Model model) {
 		User user = userService.getUser(username);
-		model.addAttribute("booklist", bookService.listBooks());
 		model.addAttribute(user);
+		model.addAttribute("booklist", bookService.listBooks());
 		model.addAttribute("titulo", "Listado de libros prestados a " + user.getName());
-		model.addAttribute("descripcion", "Formulario para añadir / modificar libros prestados a " + user.getName());
+		model.addAttribute("descripcion", "Formulario para añadir/modificar libros prestados por " + user.getName());
 
 		return "loanBooks";
 	}
@@ -81,15 +81,14 @@ public class UserController {
 	@PostMapping("/confirm_loan")
 	public String confirmLoan(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-			System.out.println(result.getErrorCount());
-			System.out.println(result.getAllErrors());
 			model.addAttribute(user);
-			addAttributes(model);
-			return "listUser";
+			model.addAttribute("booklist", bookService.listBooks());
+			model.addAttribute("titulo", "Listado de libros prestados a " + user.getName());
+			model.addAttribute("descripcion",
+					"Formulario para añadir/modificar libros prestados por " + user.getName());
+			return "loanBooks";
 		}
-
 		userService.loanBooks(user);
-
 		return "redirect:/user/list";
 	}
 

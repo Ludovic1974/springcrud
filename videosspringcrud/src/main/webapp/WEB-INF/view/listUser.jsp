@@ -27,11 +27,12 @@
 										<form:input path="username" cssClass="form-control" />
 									</c:when>
 									<c:otherwise>
-										<form:input path="username" cssClass="form-control" disabled="true"/>
+										<form:input path="username" cssClass="form-control"
+											disabled="true" />
 										<form:hidden path="username" />
-									</c:otherwise>										
+									</c:otherwise>
 								</c:choose>
-								
+
 								<form:errors path="username" cssClass="error" />
 								<form:hidden path="enabled" />
 							</div>
@@ -77,14 +78,13 @@
 							<th>Email</th>
 							<th>Modificado</th>
 							<th>Activado</th>
-							<th colspan="3">Acciones</th>
+							<th colspan="2">Acciones</th>
 						</tr>
 						<c:if test="${how_many > 0}">
 							<c:forEach items="${users}" var="user">
 								<c:url var="loan_books" value="loan_books">
 									<c:param name="username" value="${user.username}" />
 								</c:url>
-
 								<c:url var="delete" value="delete">
 									<c:param name="username" value="${user.username}" />
 								</c:url>
@@ -101,8 +101,8 @@
 											dateStyle="long" timeStyle="short" /></td>
 									<td>${user.enabled==true ? "Activado":"Desactivado"}</td>
 									<td><a href="${loan_books}" title="Consultar listado de libros prestados a ${user.name}">
-											<button type="submit" class="btn btn-primary btn-sm">Gestionar</button>
-									</a></td>
+												<button type="submit" class="btn btn-primary btn-sm">Gestionar</button>
+										</a></td>
 									<td><a href="${edit}" title="Actualizar ${user.name}">
 											<button type="submit" class="btn btn-success btn-sm">Modificar</button>
 									</a></td>

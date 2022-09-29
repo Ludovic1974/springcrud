@@ -66,7 +66,6 @@ public class Book extends DateColumns {
 	}
 
 	// FIN RELACION 1AVS CON CATEGORY
-
 	// RELACION VSAVS CON USER
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "books")
 	private List<User> users = new ArrayList<>();
@@ -102,12 +101,12 @@ public class Book extends DateColumns {
 		super(createdAt, updatedAt);
 	}
 
-	public Book() {
-
-	}
-
 	public Book(String title) {
 		this.title = title;
+	}
+
+	public Book() {
+
 	}
 
 	public long getId() {

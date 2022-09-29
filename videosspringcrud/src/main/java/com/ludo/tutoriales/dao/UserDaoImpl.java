@@ -62,28 +62,28 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void loanBooks(@Valid User user) {
-		// Qué lista tenemos?
-		// Metemos la lista en una lista provisional
+		// Qué lista tenemos ?
+		// Metemos la lista en una provisional
 		List<Book> listaEnviada = user.getBooks();
 		// Borramos la lista anterior
-		// Eso provoca que se borré los registros de la BDD
+		// Eso provoca que se borrará los registros de la BDD
 		user.setBooks(new ArrayList<>());
 		// Cargamos los libros enviados en una nueva lista
 		for (Book book : listaEnviada) {
-			// por cada elemento enviado en el fomr
+			// Por cada elemento enviado en el form
 			// hacemos una frase que usaremos para la consulta
 			String sentencia = "from Book book where book.title = :title";
-			// cargamos la session factory y la base de la frase, hacemos una consulta
+			// Cargamos la session factory y a base de la frase, hacemos una consulta
 			// para sacar un único libro
 			Book loanedBookEntity = (Book) sessionFactory.getCurrentSession().createQuery(sentencia)
 					.setParameter("title", book.getTitle()).uniqueResult();
-			// añadimos dicho libro a la lista de libros que tiene nuestro usuario
+			// Añadimos el libro a la lista de libros que tiene nuestro usuario
 			user.getBooks().add(loanedBookEntity);
 		}
 		// Grabamos
 		user.setUpdatedAt(Fecha.getTimeStamp());
 		sessionFactory.getCurrentSession().merge(user);
-		// Sinronizamos la BDD
+		// Sincronizamos la BDD
 		sessionFactory.getCurrentSession().flush();
 
 	}
