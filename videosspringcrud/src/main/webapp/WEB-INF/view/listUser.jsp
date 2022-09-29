@@ -78,7 +78,7 @@
 							<th>Email</th>
 							<th>Modificado</th>
 							<th>Activado</th>
-							<th colspan="2">Acciones</th>
+							<th colspan="3">Acciones</th>
 						</tr>
 						<c:if test="${how_many > 0}">
 							<c:forEach items="${users}" var="user">
@@ -115,7 +115,7 @@
 						</c:if>
 						<c:if test="${how_many == 0}">
 							<tr>
-								<td colspan="8">La tabla no contiene registros</td>
+								<td colspan="9">La tabla no contiene registros</td>
 							</tr>
 						</c:if>
 					</table>
