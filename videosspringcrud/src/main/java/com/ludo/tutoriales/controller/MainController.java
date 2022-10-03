@@ -26,9 +26,22 @@ public class MainController {
 		msj += "Versión 0.1.0 Añadir funciones para editar registros de libros<br/>";
 		msj += "Versión 0.1.1 Modificación del modelo Book: Lo extenderemos con el modelo DateColumns<br/>";
 		msj += "Versión 0.1.2 Creación del modelo BookDetails y de la relación con Book. Configuración de la validación.<br/>";
-
+		msj += "Versión 0.1.3 Creación del modelo Category y del formulario.<br/>";
+		msj += "Versión 0.1.4 Modificación del formulario Book para asignar categorías a los libros.<br/>";
+		msj += "Versión 0.1.5 Modificación de las interfaces del repositorio para respetar el principio de sustitución de Liskov.<br/>";
+		msj += "Versión 0.1.6 Creación del model User.<br/>";
+		msj += "Versión 0.1.7 Revisión global.<br/>";
+		/*
+		 * En la versión 0.1.7, se han llevado a cabo ciertas modificaciones al nivel de
+		 * la NAV, de la variable menu de cada controlador. Además en el formulario
+		 * User, he bloqueado la opción para modificar el username una vez creada.
+		 */
+		msj += "Versión 0.1.8 Extender la descripción de usuarios añadiendo la relación con el préstamo de Book.<br/>";
+		msj += "Versión 0.1.9 Listar los libros prestados a un usuarios en modo Lazy.<br/>";
+		msj += "Versión 0.2.0 Listar los libros prestados a UNOS usuarios en modo Lazy.<br/>";
+		msj += "Versión 0.2.1 Validación de la contraseña. Los dos campos deben de ser iguales.<br/>";
 		mv.addObject("descripcion_larga", msj);
-
+		mv.addObject("menu", "portada");
 		mv.setViewName("index");
 
 		return mv;

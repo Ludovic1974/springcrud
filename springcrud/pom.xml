@@ -8,7 +8,7 @@
 	<version>0.2.1-password</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Password valid</name>
+	<name>Crud Book Model - Validating the passwords</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 
