@@ -175,4 +175,10 @@ public class ServicesImpl implements BookService, CategoryService, UserService {
 
 	}
 
+	@Override
+	@Transactional
+	public User getUserWithBooks(String username) {
+		return userDao.getWithBooks(username);
+	}
+
 }

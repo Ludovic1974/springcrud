@@ -61,6 +61,14 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
+	public User getWithBooks(String username) {
+		String sentencia = "SELECT user FROM User user left join fetch user.books books where user.username = :username ORDER BY books.title ASC";
+		User user = (User) sessionFactory.getCurrentSession().createQuery(sentencia).setParameter("username", username)
+				.uniqueResult();
+		return user;
+	}
+
+	@Override
 	public void loanBooks(@Valid User user) {
 		// Qué lista tenemos?
 		// Metemos la lista en una lista provisional

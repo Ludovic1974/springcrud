@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutoriales</groupId>
 	<artifactId>videosspringcrud</artifactId>
-	<version>0.1.8-vs-to-vs</version>
+	<version>0.1.9-lazy-vs-eager</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - User Book relation</name>
+	<name>Crud Book Model - Fetch Lazy</name>
 	<!-- FIXME change it to the project's website -->
 	<url>https://www.ludoviclaisnez.com</url>
 

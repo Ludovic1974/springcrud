@@ -37,6 +37,7 @@ public class MainController {
 		 * User, he bloqueado la opción para modificar el username una vez creada.
 		 */
 		msj += "Versión 0.1.8 Extender la descripción de usuarios añadiendo la relación con el préstamo de Book.<br/>";
+		msj += "Versión 0.1.9 Listar los libros prestados a un usuarios en modo Lazy.<br/>";
 		mv.addObject("descripcion_larga", msj);
 		mv.addObject("menu", "portada");
 		mv.setViewName("index");

@@ -18,6 +18,8 @@ public interface UserService {
 
 	User getUser(String username);
 
+	User getUserWithBooks(String username);
+
 	void loanBooks(@Valid User user);
 
 }

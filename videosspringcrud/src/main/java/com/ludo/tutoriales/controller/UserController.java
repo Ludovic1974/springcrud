@@ -69,7 +69,7 @@ public class UserController {
 
 	@GetMapping("/loan_books")
 	public String loanBooksUser(@RequestParam("username") String username, Model model) {
-		User user = userService.getUser(username);
+		User user = userService.getUserWithBooks(username);
 		model.addAttribute("booklist", bookService.listBooks());
 		model.addAttribute(user);
 		model.addAttribute("titulo", "Listado de libros prestados a " + user.getName());
