@@ -38,7 +38,7 @@ public class MainController {
 
 		msj += "Versión 0.1.8 Extender la descripción de usuarios añadiendo la relación con el préstamo de Book.<br/>";
 		msj += "Versión 0.1.9 Listar los libros prestados a un usuario en modo Lazy.<br/>";
-		msj += "Versión 0.2.0 Listar los libros prestados a UNOS usuario en modo Lazy.<br/>";
+		msj += "Versión 0.2.0 Listar los libros prestados a UNOS usuarios en modo Lazy.<br/>";
 		mv.addObject("descripcion",
 				"En esta sección, aprenderemos cómo crear un CRUD usando Spring MVC e Hibernate ORM framework "
 						+ "sin ningún fichero de configuración XML que no sea el POM de Maven.");

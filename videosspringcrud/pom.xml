@@ -5,7 +5,7 @@
 
 	<groupId>com.ludo.tutoriales</groupId>
 	<artifactId>videosspringcrud</artifactId>
-	<version>0.1.9-lazy-vs-eager</version>
+	<version>0.2.0-lazy-vs-eager-p2</version>
 	<packaging>war</packaging>
 
 	<name>Crud Book Model - Fetch Lazy</name>
