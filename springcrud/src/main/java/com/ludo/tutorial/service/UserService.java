@@ -16,6 +16,8 @@ public interface UserService {
 
 	List<?> listUsers();
 
+	List<?> listWithBooks();
+
 	List<?> findByEmail(String email);
 
 	long numUsers();

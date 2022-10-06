@@ -15,7 +15,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
 		<org.springframework>5.3.22</org.springframework>
 		<hibernate.version>5.6.10.Final</hibernate.version>
 		<springsecurity.version>5.6.6</springsecurity.version>
@@ -62,6 +62,14 @@
 			<version>${org.springframework}</version>
 		</dependency>
 
+		<!-- Spring ORM -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${org.springframework}</version>
+		</dependency>
+
 		<!-- PARA AÑADIR NUEVAS TAGS Y REALIZAR ACCIONES ESPECIALES
 		EN LOS FICHEROS JSP COMO BUCLES, CONDICIONALES...
 		https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
@@ -72,13 +80,6 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- Spring ORM -->
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>${org.springframework}</version>
-		</dependency>
 
 		<!-- Mysql Connector -->
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -101,24 +102,24 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>${hibernate.version}</version>
-		</dependency>	
-		
-			<!-- Hibernate Validator -->
+		</dependency>
+
+		<!-- Hibernate Validator -->
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>6.0.17.Final</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>2.7.1</version>
+			<version>2.7.2</version>
 		</dependency>
-		
-			<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>

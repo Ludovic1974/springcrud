@@ -1,4 +1,4 @@
-package com.ludo.tutorial.controller;
+package com.ludo.tutoriales.controller;
 
 import javax.validation.Valid;
 
@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ludo.tutorial.dto.UserDto;
-import com.ludo.tutorial.model.User;
-import com.ludo.tutorial.service.BookService;
-import com.ludo.tutorial.service.UserService;
+import com.ludo.tutoriales.model.User;
+import com.ludo.tutoriales.service.BookService;
+import com.ludo.tutoriales.service.UserService;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -28,16 +27,8 @@ public class UserController {
 	private BookService bookService;
 
 	@GetMapping("/list")
-	public String userForm(Model model) {
+	public String list(Model model) {
 		model.addAttribute("user", new User());
-		addAttributes(model);
-		return "listUser";
-	}
-
-	@GetMapping("/edit")
-	public String editUser(@RequestParam("username") String username, Model model) {
-		User user = userService.getUser(username);
-		model.addAttribute(user);
 		addAttributes(model);
 		return "listUser";
 	}
@@ -45,37 +36,31 @@ public class UserController {
 	private void addAttributes(Model model) {
 		model.addAttribute("users", userService.listWithBooks());
 		model.addAttribute("how_many", userService.numUsers());
-		model.addAttribute("titulo", "Formulario Usuarios");
-		model.addAttribute("descripcion", "Formulario para añadir/modificar los usuarios");
+		model.addAttribute("titulo", "Formulario usuarios");
+		model.addAttribute("descripcion",
+				"En esta sección, después de haber creado instancias de usuarios, las listamos.");
 		model.addAttribute("menu", "lista_usuarios");
 	}
 
 	@PostMapping("/save")
-	public String saveUser(@ModelAttribute("user") @Valid UserDto userDto, BindingResult result, Model model) {
+	public String saveUser(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
 		String equalPasswords = null;
-		String emailExist = null;
 		if (result.hasErrors()) {
 			System.out.println("Número de errores: " + result.getErrorCount());
 			System.out.println("EqualPasswords.user: " + result.getFieldErrors());
-			System.out.println("Todas errores: " + result.getAllErrors().get(0).getDefaultMessage());
+			System.out.println("Todos errores: " + result.getAllErrors().get(0).getDefaultMessage());
+
 			for (int i = 0; i < result.getAllErrors().size(); i++) {
-				if (result.getAllErrors().get(i).getDefaultMessage().equals("{user.passwords.not.igual}")) {
+				if (result.getAllErrors().get(i).getDefaultMessage().equals("Las contraseñas no son iguales")) {
 					equalPasswords = "Las contraseñas no son iguales";
-					continue;
-				}
-				if (result.getAllErrors().get(i).getDefaultMessage().equals("{user.email.exist}")) {
-					emailExist = "Este email ya existe";
+					break;
 				}
 			}
-
 			model.addAttribute("equalPasswords", equalPasswords);
-			model.addAttribute("emailExist", emailExist);
-			model.addAttribute(userDto);
+			model.addAttribute(user);
 			addAttributes(model);
 			return "listUser";
 		}
-		User user = new User(userDto);
-
 		userService.save(user);
 		return "redirect:/user/list";
 	}
@@ -86,13 +71,21 @@ public class UserController {
 		return "redirect:/user/list";
 	}
 
+	@GetMapping("/edit")
+	public String editUser(@RequestParam("username") String username, Model model) {
+		User user = userService.getUser(username);
+		model.addAttribute(user);
+		addAttributes(model);
+		return "listUser";
+	}
+
 	@GetMapping("/loan_books")
 	public String loanBooksUser(@RequestParam("username") String username, Model model) {
 		User user = userService.getUserWithBooks(username);
-		model.addAttribute(user);
 		model.addAttribute("booklist", bookService.listBooks());
+		model.addAttribute(user);
 		model.addAttribute("titulo", "Listado de libros prestados a " + user.getName());
-		model.addAttribute("descripcion", "Formulario para añadir/modificar libros prestados por " + user.getName());
+		model.addAttribute("descripcion", "Formulario para añadir / modificar libros prestados a " + user.getName());
 
 		return "loanBooks";
 	}
@@ -100,9 +93,12 @@ public class UserController {
 	@PostMapping("/confirm_loan")
 	public String confirmLoan(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
 		if (result.hasErrors()) {
+			System.out.println(result.getErrorCount());
+			System.out.println(result.getAllErrors());
 			addAttributes(model);
 			return "listUser";
 		}
+
 		userService.loanBooks(user);
 
 		return "redirect:/user/list";

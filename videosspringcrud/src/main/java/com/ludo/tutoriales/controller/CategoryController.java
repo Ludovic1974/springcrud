@@ -1,4 +1,4 @@
-package com.ludo.tutorial.controller;
+package com.ludo.tutoriales.controller;
 
 import javax.validation.Valid;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ludo.tutorial.model.Category;
-import com.ludo.tutorial.service.CategoryService;
+import com.ludo.tutoriales.model.Category;
+import com.ludo.tutoriales.service.CategoryService;
 
 @Controller
 @RequestMapping(value = "/category")
@@ -34,10 +34,10 @@ public class CategoryController {
 
 	private void addAttributes(Model model, String ttl, String msj) {
 		model.addAttribute("categories", categoryService.listCategories());
-		model.addAttribute("menu", "lista_categorias");
 		model.addAttribute("how_many", categoryService.numCategories());
 		model.addAttribute("titulo", ttl);
 		model.addAttribute("descripcion", msj);
+		model.addAttribute("menu", "lista_categorias");
 	}
 
 	@PostMapping("/save")

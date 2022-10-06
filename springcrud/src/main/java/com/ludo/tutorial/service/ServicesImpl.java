@@ -180,4 +180,10 @@ public class ServicesImpl implements BookService, CategoryService, UserService {
 
 	}
 
+	@Override
+	@Transactional
+	public List<?> listWithBooks() {
+		return userDao.listWithBooks();
+	}
+
 }

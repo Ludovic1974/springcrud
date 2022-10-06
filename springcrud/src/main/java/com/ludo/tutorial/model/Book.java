@@ -46,9 +46,10 @@ public class Book extends DateColumns {
 	@NotEmpty(message = "{book.value.required}")
 	private String author;
 
+	// RELACION 1A1 CON BOOKDETAILS
 	// https://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence-api
 	// de uno a uno se puede permitir el uso de ALL
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "book", fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "book")
 	@Valid
 	private BookDetails bookDetails;
 
@@ -59,9 +60,11 @@ public class Book extends DateColumns {
 	public void setBookDetails(BookDetails bookDetails) {
 		this.bookDetails = bookDetails;
 	}
+	// FIN RELACION 1A1 CON BOOKDETAILS
 
+	// RELACION 1AVS CON CATEGORY
 	@ManyToOne
-	@JoinColumn(name = "cat_id")
+	@JoinColumn(name = "category_id")
 	@Valid
 	private Category category;
 
@@ -73,6 +76,8 @@ public class Book extends DateColumns {
 		this.category = category;
 	}
 
+	// FIN RELACION 1A1 CON CATEGORY
+	// RELACION 1AVS CON USER
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "books")
 	private List<User> users = new ArrayList<>();
 
@@ -83,6 +88,7 @@ public class Book extends DateColumns {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
+	// FIN RELACION 1A1 CON USER
 
 	public Book() {
 	}

@@ -1,23 +1,19 @@
-package com.ludo.tutorial.dao;
+package com.ludo.tutoriales.dao;
 
 import java.util.List;
 
 import javax.validation.Valid;
 
-import com.ludo.tutorial.model.User;
+import com.ludo.tutoriales.model.User;
 
 public interface UserDao extends ObjectDao {
-
-	List<?> findByEmail(@Valid String email);
-
 	void delete(String username);
 
-	Object get(String username);
+	User get(String username);
 
 	void loanBooks(@Valid User user);
 
-	Object getWithBooks(String username);
+	User getWithBooks(String username);
 
 	List<?> listWithBooks();
-
 }
