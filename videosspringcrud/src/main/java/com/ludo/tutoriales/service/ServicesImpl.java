@@ -119,6 +119,20 @@ public class ServicesImpl implements BookService, CategoryService, UserService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
+	public List<?> listWithBooks() {
+		// TODO Auto-generated method stub
+		return userDao.listWithBooks();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<?> findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return userDao.findByEmail(email);
+	}
+
+	@Override
 	@Transactional
 	public Long numUsers() {
 		// TODO Auto-generated method stub
@@ -179,13 +193,6 @@ public class ServicesImpl implements BookService, CategoryService, UserService {
 	@Transactional
 	public User getUserWithBooks(String username) {
 		return userDao.getWithBooks(username);
-	}
-
-	@Override
-	@Transactional
-	public List<?> listWithBooks() {
-		// TODO Auto-generated method stub
-		return userDao.listWithBooks();
 	}
 
 }

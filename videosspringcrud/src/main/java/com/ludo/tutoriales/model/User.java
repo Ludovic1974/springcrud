@@ -16,6 +16,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.ludo.tutoriales.dto.UserDto;
 import com.ludo.tutoriales.other.EqualFields;
 
 @Entity
@@ -100,6 +101,19 @@ public class User extends DateColumns {
 	public User(Date createdAt, Date updatedAt) {
 		super(createdAt, updatedAt);
 		// TODO Auto-generated constructor stub
+	}
+
+	public User(UserDto copy) {
+
+		this.setUsername(copy.getUsername());
+		this.setName(copy.getName());
+		this.setSurname(copy.getSurname());
+		this.setEmail(copy.getEmail());
+		this.setPassword(copy.getPassword());
+		this.setConfirmPassword(copy.getConfirmPassword());
+		this.setEnabled(copy.isEnabled());
+		this.setBooks(copy.getBooks());
+
 	}
 
 	public String getUsername() {

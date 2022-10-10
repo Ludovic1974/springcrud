@@ -12,6 +12,8 @@ public interface UserService {
 
 	List<?> listWithBooks();
 
+	List<?> findByEmail(String email);
+
 	Long numUsers();
 
 	void save(@Valid User user);

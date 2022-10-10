@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ludo.tutoriales.dto.UserDto;
 import com.ludo.tutoriales.model.User;
 import com.ludo.tutoriales.service.BookService;
 import com.ludo.tutoriales.service.UserService;
@@ -43,7 +44,7 @@ public class UserController {
 	}
 
 	@PostMapping("/save")
-	public String saveUser(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
+	public String saveUser(@ModelAttribute("user") @Valid UserDto userDto, BindingResult result, Model model) {
 		String equalPasswords = null;
 		if (result.hasErrors()) {
 			System.out.println("Número de errores: " + result.getErrorCount());
@@ -57,10 +58,11 @@ public class UserController {
 				}
 			}
 			model.addAttribute("equalPasswords", equalPasswords);
-			model.addAttribute(user);
+			model.addAttribute(userDto);
 			addAttributes(model);
 			return "listUser";
 		}
+		User user = new User(userDto);
 		userService.save(user);
 		return "redirect:/user/list";
 	}

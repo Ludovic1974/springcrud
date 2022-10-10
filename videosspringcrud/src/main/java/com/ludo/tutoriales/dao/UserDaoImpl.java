@@ -40,6 +40,15 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
+	public List<?> findByEmail(String email) {
+		String sentencia;
+		TypedQuery<?> query;
+		sentencia = "SELECT user FROM User user where user.email = :email";
+		query = sessionFactory.getCurrentSession().createQuery(sentencia).setParameter("email", email);
+		return query.getResultList();
+	}
+
+	@Override
 	public long num() {
 
 		return ((long) sessionFactory.getCurrentSession().createQuery("SELECT COUNT(*) FROM User").uniqueResult());
