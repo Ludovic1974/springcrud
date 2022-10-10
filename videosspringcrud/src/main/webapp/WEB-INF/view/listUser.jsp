@@ -97,7 +97,7 @@
 												<th>Email</th>
 												<th>Modificado</th>
 												<th>Activado</th>
-												<th colspan="3">Acciones</th>
+												<th colspan="4">Acciones</th>
 											</tr>
 											<c:url var="loan_books" value="loan_books">
 												<c:param name="username" value="${user.username}" />
@@ -106,6 +106,9 @@
 												<c:param name="username" value="${user.username}" />
 											</c:url>
 											<c:url var="edit" value="edit">
+												<c:param name="username" value="${user.username}" />
+											</c:url>
+											<c:url var="role" value="role">
 												<c:param name="username" value="${user.username}" />
 											</c:url>
 											<tr>
@@ -126,6 +129,11 @@
 												<td><a href="${delete}" title="Borrar ${user.name}">
 														<button type="submit" class="btn btn-danger btn-sm"
 															onclick="if(!(confirm('¿Seguro que quieres eliminar el registro?'))) return false">Borrar</button>
+												</a></td>
+
+												<td><a href="${role}"
+													title="Gestionar permisos de ${user.name}">
+														<button type="submit" class="btn btn-info btn-sm">Permisos</button>
 												</a></td>
 											</tr>
 										</table>
