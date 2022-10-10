@@ -10,12 +10,16 @@ import javax.validation.Payload;
 
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = { EqualPasswordsValidator.class })
-public @interface EqualPasswords {
-	String message() default "{user.passwords.not.igual}";
+@Constraint(validatedBy = { EqualFieldsValidator.class })
+public @interface EqualFields {
+	String message() default "{user.fields.not.igual}";
 
 	Class<?>[] groups() default {};
 
 	Class<? extends Payload>[] payload() default {};
+
+	String baseField();
+
+	String matchField();
 
 }

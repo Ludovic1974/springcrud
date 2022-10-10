@@ -40,6 +40,7 @@ public class MainController {
 		msj += "Versión 0.1.9 Listar los libros prestados a un usuarios en modo Lazy.<br/>";
 		msj += "Versión 0.2.0 Listar los libros prestados a UNOS usuarios en modo Lazy.<br/>";
 		msj += "Versión 0.2.1 Validación de la contraseña. Los dos campos deben de ser iguales.<br/>";
+		msj += "Versión 0.2.2 Validación de dos campos del formulario. Deben de ser iguales.<br/>";
 		mv.addObject("descripcion_larga", msj);
 		mv.addObject("menu", "portada");
 		mv.setViewName("index");

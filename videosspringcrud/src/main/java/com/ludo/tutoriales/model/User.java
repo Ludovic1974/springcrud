@@ -16,11 +16,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-import com.ludo.tutoriales.other.EqualPasswords;
+import com.ludo.tutoriales.other.EqualFields;
 
 @Entity
 @Table(name = "user")
-@EqualPasswords(message = "{user.passwords.not.igual}")
+@EqualFields(message = "{user.fields.not.igual}", baseField = "password", matchField = "confirmPassword")
 public class User extends DateColumns {
 
 	@Id

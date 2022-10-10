@@ -32,28 +32,28 @@
 									</c:otherwise>
 								</c:choose>
 
-								<form:errors path="username" cssClass="error" />
+								<form:errors path="username" cssClass="errors" />
 								<form:hidden path="enabled" />
 							</div>
 							<div class="mb-3">
 								<form:label path="name" cssClass="form-label">Nombre</form:label>
 								<form:input path="name" cssClass="form-control" />
-								<form:errors path="name" cssClass="error" />
+								<form:errors path="name" cssClass="errors" />
 							</div>
 							<div class="mb-3">
 								<form:label path="surname" cssClass="form-label">Apellido</form:label>
 								<form:input path="surname" cssClass="form-control" />
-								<form:errors path="surname" cssClass="error" />
+								<form:errors path="surname" cssClass="errors" />
 							</div>
 							<div class="mb-3">
 								<form:label path="email" cssClass="form-label">Email</form:label>
 								<form:input path="email" cssClass="form-control" />
-								<form:errors path="email" cssClass="error" />
+								<form:errors path="email" cssClass="errors" />
 							</div>
 							<div class="mb-3">
 								<form:label path="password" cssClass="form-label">Contraseña</form:label>
 								<form:password path="password" cssClass="form-control" />
-								<form:errors path="password" cssClass="error" />
+								<form:errors path="password" cssClass="errors" />
 								<c:if test="${equalPasswords != null}">
 									<span class="errors">${equalPasswords}</span>
 								</c:if>
@@ -61,7 +61,7 @@
 							<div class="mb-3">
 								<form:label path="confirmPassword" cssClass="form-label">Repetir contraseña</form:label>
 								<form:password path="confirmPassword" cssClass="form-control" />
-								<form:errors path="confirmPassword" cssClass="error" />
+								<form:errors path="confirmPassword" cssClass="errors" />
 
 							</div>
 
