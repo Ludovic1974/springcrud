@@ -11,14 +11,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ludo.tutoriales.dao.LibraryDao;
+import com.ludo.tutoriales.dao.RoleDao;
 import com.ludo.tutoriales.dao.UserDao;
 import com.ludo.tutoriales.model.Book;
 import com.ludo.tutoriales.model.Category;
+import com.ludo.tutoriales.model.Role;
 import com.ludo.tutoriales.model.User;
 import com.ludo.tutoriales.other.Fecha;
 
 @Service
-public class ServicesImpl implements BookService, CategoryService, UserService {
+public class ServicesImpl implements BookService, CategoryService, UserService, RoleService {
 
 	@Autowired
 	@Qualifier("bookDaoImpl")
@@ -30,6 +32,9 @@ public class ServicesImpl implements BookService, CategoryService, UserService {
 
 	@Autowired
 	private UserDao userDao;
+
+	@Autowired
+	private RoleDao roleDao;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -193,6 +198,13 @@ public class ServicesImpl implements BookService, CategoryService, UserService {
 	@Transactional
 	public User getUserWithBooks(String username) {
 		return userDao.getWithBooks(username);
+	}
+
+	@Override
+	@Transactional
+	public void save(Role role) {
+		roleDao.save(role);
+
 	}
 
 }

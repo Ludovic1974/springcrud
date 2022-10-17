@@ -43,6 +43,7 @@ public class MainController {
 		msj += "Versión 0.2.2 Validación de dos campos del formulario. Deben de ser iguales.<br/>";
 		msj += "Versión 0.2.3 Validación del campo email. No debe de figurar en la BDD.<br/>";
 		msj += "Versión 0.2.4 Creación del modelo Role.<br/>";
+		msj += "Versión 0.2.5 Atribuir roles a los usuarios.<br/>";
 		mv.addObject("descripcion_larga", msj);
 		mv.addObject("menu", "portada");
 		mv.setViewName("index");
