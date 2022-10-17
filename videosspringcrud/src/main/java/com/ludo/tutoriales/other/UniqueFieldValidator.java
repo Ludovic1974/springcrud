@@ -12,7 +12,7 @@ import com.ludo.tutoriales.service.UserService;
 public class UniqueFieldValidator implements ConstraintValidator<UniqueField, String> {
 
 	@Autowired
-	private UserService userService;;
+	private UserService userService;
 
 	@Override
 	public boolean isValid(String email, ConstraintValidatorContext context) {
