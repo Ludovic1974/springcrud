@@ -26,7 +26,7 @@
 								</form:label>
 								<form:input id="name" path="name" cssClass="form-control"
 									onmouseover="pinta('name')" onmouseout="vuelve('name')" />
-								<form:errors path="name" cssClass="error" />
+								<form:errors path="name" cssClass="errors" />
 								<form:hidden path="id" />							
 							</div>				
 							<button type="submit" class="btn btn-primary">Validar</button>

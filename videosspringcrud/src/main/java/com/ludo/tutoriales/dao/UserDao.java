@@ -2,8 +2,6 @@ package com.ludo.tutoriales.dao;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import com.ludo.tutoriales.model.User;
 
 public interface UserDao extends ObjectDao {
@@ -11,7 +9,7 @@ public interface UserDao extends ObjectDao {
 
 	User get(String username);
 
-	void loanBooks(@Valid User user);
+	void loanBooks(User user);
 
 	User getWithBooks(String username);
 

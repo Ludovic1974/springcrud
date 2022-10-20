@@ -6,6 +6,10 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.userdetails.User.UserBuilder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +24,7 @@ import com.ludo.tutoriales.model.User;
 import com.ludo.tutoriales.other.Fecha;
 
 @Service
-public class ServicesImpl implements BookService, CategoryService, UserService, RoleService {
+public class ServicesImpl implements BookService, CategoryService, UserService, RoleService, UserDetailsService {
 
 	@Autowired
 	@Qualifier("bookDaoImpl")
@@ -89,7 +93,7 @@ public class ServicesImpl implements BookService, CategoryService, UserService, 
 
 	@Override
 	@Transactional
-	public void save(@Valid Category category) {
+	public void save(Category category) {
 		if (category.getId() > 0) {
 			System.out.println("Actu de categoría");
 			category.setUpdatedAt(Fecha.getTimeStamp());
@@ -146,7 +150,7 @@ public class ServicesImpl implements BookService, CategoryService, UserService, 
 
 	@Override
 	@Transactional
-	public void save(@Valid User user) {
+	public void save(User user) {
 		User copiaUser = null;
 		if (userDao.get(user.getUsername()) == null) {
 			copiaUser = new User();
@@ -204,6 +208,28 @@ public class ServicesImpl implements BookService, CategoryService, UserService, 
 	@Transactional
 	public void save(Role role) {
 		roleDao.save(role);
+
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+		User user = userDao.get(username);
+		UserBuilder builder = null;
+
+		if (user != null) {
+			builder = org.springframework.security.core.userdetails.User.withUsername(username);
+			builder.disabled(!user.isEnabled());
+			builder.password(user.getPassword());
+			String[] authorities = user.getRoles().stream().map(a -> a.getAuthority()).toArray(String[]::new);
+			builder.authorities(authorities);
+
+		} else {
+			throw new UsernameNotFoundException("Usuario no encontrado");
+		}
+
+		return builder.build();
 
 	}
 

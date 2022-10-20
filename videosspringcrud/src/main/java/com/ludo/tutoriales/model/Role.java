@@ -32,7 +32,7 @@ public class Role {
 	public Role() {
 	}
 
-	public Role(@NotEmpty(message = "{role.value.required}") String authority) {
+	public Role(String authority) {
 		this.authority = authority;
 	}
 

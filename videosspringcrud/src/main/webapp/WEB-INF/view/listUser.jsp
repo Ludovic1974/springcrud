@@ -20,12 +20,14 @@
 							<legend>${titulo}</legend>
 
 							<div class="mb-3">
-								<form:label path="username" cssClass="form-label">Nombre de perfil</form:label>
 								<c:choose>
 									<c:when test="${param.username == null}">
+								<form:label path="username" cssClass="form-label">Nombre de perfil<span
+										class="asterix">*</span></form:label>
 										<form:input path="username" cssClass="form-control" />
 									</c:when>
 									<c:otherwise>
+								<form:label path="username" cssClass="form-label">Nombre de perfil</form:label>
 										<form:input path="username" cssClass="form-control"
 											disabled="true" />
 										<form:hidden path="username" />
@@ -46,12 +48,14 @@
 								<form:errors path="surname" cssClass="errors" />
 							</div>
 							<div class="mb-3">
-								<form:label path="email" cssClass="form-label">Email</form:label>
+								<form:label path="email" cssClass="form-label">Email<span
+										class="asterix">*</span></form:label>
 								<form:input path="email" cssClass="form-control" />
 								<form:errors path="email" cssClass="errors" />
 							</div>
 							<div class="mb-3">
-								<form:label path="password" cssClass="form-label">Contraseña</form:label>
+								<form:label path="password" cssClass="form-label">Contraseña<span
+										class="asterix">*</span></form:label>
 								<form:password path="password" cssClass="form-control" />
 								<form:errors path="password" cssClass="errors" />
 								<c:if test="${equalPasswords != null}">
@@ -59,7 +63,8 @@
 								</c:if>
 							</div>
 							<div class="mb-3">
-								<form:label path="confirmPassword" cssClass="form-label">Repetir contraseña</form:label>
+								<form:label path="confirmPassword" cssClass="form-label">Repetir contraseña<span
+										class="asterix">*</span></form:label>
 								<form:password path="confirmPassword" cssClass="form-control" />
 								<form:errors path="confirmPassword" cssClass="errors" />
 
@@ -138,7 +143,7 @@
 											</tr>
 										</table>
 										<c:if test="${user.books.size() > 0}">
-											<table class="table table-striped">
+											<table class="table table-striped table-dark">
 												<tr>
 													<th>ID</th>
 													<th>Libro</th>

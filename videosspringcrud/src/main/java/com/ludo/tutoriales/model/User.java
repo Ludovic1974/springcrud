@@ -29,27 +29,23 @@ public class User extends DateColumns {
 
 	@Id
 	@Column
-	@Size(max = 50, min = 3, message = "{user.username.invalid}")
-	@NotEmpty(message = "{user.username.required}")
 	private String username;
 
 	@Column
-	@Size(max = 50, min = 3, message = "{user.name.invalid}")
 	private String name;
+
 	@Column
-	@Size(max = 50, min = 3, message = "{user.surname.invalid}")
 	private String surname;
-	@Column(name = "email", length = 70)
-	@Email(message = "{user.email.invalid}")
-	@NotEmpty(message = "{user.email.required}")
+
+	@Column(length = 70)
 	private String email;
+
 	@Column
-	@Size(max = 255, min = 3, message = "{user.password.invalid}")
-	@NotEmpty(message = "{user.password.required}")
 	private String password;
+
 	@Column(name = "confirm_password")
-	@NotEmpty(message = "{user.confirm_password.required}")
 	private String confirmPassword;
+
 	@Column
 	private boolean enabled;
 

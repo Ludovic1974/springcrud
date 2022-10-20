@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
-import javax.validation.Valid;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -50,7 +49,6 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public long num() {
-
 		return ((long) sessionFactory.getCurrentSession().createQuery("SELECT COUNT(*) FROM User").uniqueResult());
 	}
 
@@ -87,7 +85,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void loanBooks(@Valid User user) {
+	public void loanBooks(User user) {
 		// Qué lista tenemos?
 		// Metemos la lista en una lista provisional
 		List<Book> listaEnviada = user.getBooks();

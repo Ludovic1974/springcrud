@@ -18,8 +18,7 @@
 							<legend>${titulo}</legend>
 							<p>${descripcion}</p>
 							<div class="mb-3">
-								<form:label path="user.username" cssClass="form-label">Nombre de perfil<span
-										class="asterix">*</span>
+								<form:label path="user.username" cssClass="form-label">Nombre de perfil
 								</form:label>
 								<form:input path="user.username" cssClass="form-control"
 									disabled="true" value="${user.username}" />
