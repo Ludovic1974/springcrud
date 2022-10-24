@@ -1,4 +1,4 @@
-package com.ludo.tutoriales.other;
+package com.ludo.tutoriales.validation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,14 +8,18 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Target({ ElementType.METHOD, ElementType.FIELD })
+@Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = { UniqueFieldValidator.class })
-public @interface UniqueField {
-	String message() default "{user.email.exist}";
+@Constraint(validatedBy = { EqualFieldsValidator.class })
+public @interface EqualFields {
+	String message() default "{user.fields.not.igual}";
 
 	Class<?>[] groups() default {};
 
 	Class<? extends Payload>[] payload() default {};
+
+	String baseField();
+
+	String matchField();
 
 }

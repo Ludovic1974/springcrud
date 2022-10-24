@@ -56,6 +56,7 @@ public class UserController {
 	@PostMapping("/save")
 	public String saveUser(@ModelAttribute("user") @Valid UserDto userDto, BindingResult result, Model model) {
 		String equalPasswords = null;
+		String emailExist = null;
 		if (result.hasErrors()) {
 			System.out.println("Número de errores: " + result.getErrorCount());
 			System.out.println("EqualPasswords.user: " + result.getFieldErrors());
@@ -64,10 +65,15 @@ public class UserController {
 			for (int i = 0; i < result.getAllErrors().size(); i++) {
 				if (result.getAllErrors().get(i).getDefaultMessage().equals("Las contraseñas no son iguales")) {
 					equalPasswords = "Las contraseñas no son iguales";
-					break;
+					continue;
+				}
+				if (result.getAllErrors().get(i).getDefaultMessage().equals("Este email ya está registrado")) {
+					emailExist = "Este email ya está registrado";
+
 				}
 			}
 			model.addAttribute("equalPasswords", equalPasswords);
+			model.addAttribute("emailExist", emailExist);
 			model.addAttribute(userDto);
 			addAttributes(model);
 			return "listUser";

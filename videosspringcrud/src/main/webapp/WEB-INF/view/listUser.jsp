@@ -52,6 +52,9 @@
 										class="asterix">*</span></form:label>
 								<form:input path="email" cssClass="form-control" />
 								<form:errors path="email" cssClass="errors" />
+								<c:if test="${emailExist != null}">
+									<span class="errors">${emailExist}</span>
+								</c:if>
 							</div>
 							<div class="mb-3">
 								<form:label path="password" cssClass="form-label">Contraseña<span

@@ -20,7 +20,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.ludo.tutoriales.dto.UserDto;
-import com.ludo.tutoriales.other.EqualFields;
+import com.ludo.tutoriales.validation.EqualFields;
 
 @Entity
 @Table(name = "user")

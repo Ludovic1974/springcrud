@@ -8,10 +8,11 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.ludo.tutoriales.model.Book;
-import com.ludo.tutoriales.other.EqualFields;
-import com.ludo.tutoriales.other.UniqueField;
+import com.ludo.tutoriales.validation.EqualFields;
+import com.ludo.tutoriales.validation.UniqueField;
 
 @EqualFields(message = "{user.fields.not.igual}", baseField = "password", matchField = "confirmPassword")
+@UniqueField(message = "{user.email.exist}", username = "username", email = "email")
 public class UserDto {
 
 	@Size(max = 50, min = 3, message = "{user.username.invalid}")
@@ -26,7 +27,6 @@ public class UserDto {
 
 	@Email(message = "{user.email.invalid}")
 	@NotEmpty(message = "{user.email.required}")
-	@UniqueField
 	private String email;
 
 	@Size(max = 255, min = 3, message = "{user.password.invalid}")

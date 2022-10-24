@@ -1,26 +1,28 @@
-package com.ludo.tutoriales.other;
-
-import java.lang.reflect.Field;
+package com.ludo.tutoriales.validation;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
+import com.ludo.tutoriales.other.Funciones;
 
 public class EqualFieldsValidator implements ConstraintValidator<EqualFields, Object> {
 
 	private String baseField;
 	private String matchField;
+	private Funciones funciones;
 
 	@Override
 	public void initialize(EqualFields constraint) {
-		baseField = constraint.baseField();
-		matchField = constraint.matchField();
+		this.baseField = constraint.baseField();
+		this.matchField = constraint.matchField();
+		this.funciones = new Funciones();
 	}
 
 	@Override
 	public boolean isValid(Object object, ConstraintValidatorContext context) {
 		try {
-			Object baseFieldValue = getFieldValue(object, baseField);
-			Object matchFieldValue = getFieldValue(object, matchField);
+			Object baseFieldValue = funciones.getFieldValue(object, baseField);
+			Object matchFieldValue = funciones.getFieldValue(object, matchField);
 			return baseFieldValue != null && baseFieldValue.equals(matchFieldValue);
 
 		} catch (Exception e) {
@@ -28,14 +30,6 @@ public class EqualFieldsValidator implements ConstraintValidator<EqualFields, Ob
 			e.printStackTrace();
 			return false;
 		}
-
-	}
-
-	private Object getFieldValue(Object object, String fieldname) throws Exception {
-		Class<?> clazz = object.getClass();
-		Field field = clazz.getDeclaredField(fieldname);
-		field.setAccessible(true);
-		return field.get(object);
 
 	}
 

@@ -12,7 +12,7 @@ public interface UserService {
 
 	List<?> listWithBooks();
 
-	List<?> findByEmail(String email);
+	List<?> findByEmail(Object email);
 
 	Long numUsers();
 
