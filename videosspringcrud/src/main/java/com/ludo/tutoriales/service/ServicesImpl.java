@@ -2,8 +2,6 @@ package com.ludo.tutoriales.service;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.User.UserBuilder;
@@ -193,7 +191,7 @@ public class ServicesImpl implements BookService, CategoryService, UserService, 
 
 	@Override
 	@Transactional
-	public void loanBooks(@Valid User user) {
+	public void loanBooks(User user) {
 		userDao.loanBooks(user);
 
 	}

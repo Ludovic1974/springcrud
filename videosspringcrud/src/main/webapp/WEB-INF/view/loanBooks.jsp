@@ -25,12 +25,8 @@
 								<form:label path="name" cssClass="form-label">Nombre</form:label>
 								<form:input path="name" cssClass="form-control" disabled="true" />
 								<form:hidden path="username" />
-								<form:hidden path="enabled" />
-								<form:hidden path="name" />
-								<form:hidden path="surname" />
-								<form:hidden path="email" />
-								<form:hidden path="password" />
-								<form:hidden path="confirmPassword" />
+					
+						
 							</div>
 
 							<div class="mb-3">

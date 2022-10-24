@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutoriales</groupId>
 	<artifactId>videosspringcrud</artifactId>
-	<version>0.2.7-Init-session-p2</version>
+	<version>0.2.8-solving-security-problem</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Init session - part 2</name>
+	<name>Crud Book Model - Solving a security problem</name>
 	<!-- FIXME change it to the project's website -->
 	<url>https://www.ludoviclaisnez.com</url>
 

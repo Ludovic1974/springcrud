@@ -2,6 +2,7 @@ package com.ludo.tutoriales.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ludo.tutoriales.dto.UserDto;
+import com.ludo.tutoriales.model.Book;
 import com.ludo.tutoriales.model.Role;
 import com.ludo.tutoriales.model.User;
 import com.ludo.tutoriales.service.BookService;
@@ -101,17 +103,11 @@ public class UserController {
 	}
 
 	@PostMapping("/confirm_loan")
-	public String confirmLoan(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
-		if (result.hasErrors()) {
-			System.out.println(result.getErrorCount());
-			System.out.println(result.getAllErrors());
-			model.addAttribute(user);
-			addAttributes(model);
-			return "listUser";
-		}
-
+	public String confirmLoan(@ModelAttribute("user") User userSent, Model model) {
+		User user = userService.getUserWithBooks(userSent.getUsername());
+		List<Book> books = userSent.getBooks();
+		user.setBooks(books);
 		userService.loanBooks(user);
-
 		return "redirect:/user/list";
 	}
 
