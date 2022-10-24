@@ -46,6 +46,7 @@ public class MainController {
 		msj += "Versión 0.2.4 Creación del modelo Role.<br/>";
 		msj += "Versión 0.2.5 Atribuir roles a los usuarios.<br/>";
 		msj += "Versión 0.2.6 Añadir el inicio de sesión.<br/>";
+		msj += "Versión 0.2.7 Finalizar la configuración del inicio de sesión.<br/>";
 		mv.addObject("descripcion_larga", msj);
 		mv.addObject("menu", "portada");
 		mv.setViewName("index");
@@ -62,4 +63,37 @@ public class MainController {
 
 		return mv;
 	}
+
+	@GetMapping("/forbidden")
+	public ModelAndView forbidden() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("titulo", "Contenidos restringidos");
+		mv.addObject("descripcion", "Ups! Por lo que parece, no puedes acceder a estos contenidos.");
+		mv.addObject("lorem", lorem());
+		mv.setViewName("forbidden");
+
+		return mv;
+	}
+
+	private String lorem() {
+		String cadena = null;
+		cadena += "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+				+ "Morbi feugiat lacus ac enim eleifend, id sodales neque lobortis. "
+				+ "Sed id dui nec elit aliquet condimentum non vel dolor. "
+				+ "Quisque eget molestie dolor, vitae fermentum magna. "
+				+ "Aenean sodales risus tristique, malesuada leo et, fringilla magna. Suspendisse malesuada semper orci ac aliquet. "
+				+ "Proin faucibus nisl et augue elementum rutrum. "
+				+ "Nunc et neque egestas, molestie ex eget, vehicula justo. Donec luctus porttitor nisi quis efficitur. "
+				+ "Nulla pulvinar velit eu dolor posuere, a ultrices turpis molestie. "
+				+ "Nunc varius rutrum ligula, quis auctor dolor ullamcorper ac. Nam in risus eu lorem scelerisque egestas.\r\n"
+				+ "Nam ullamcorper commodo scelerisque. Proin risus lacus, "
+				+ "consectetur rutrum vulputate non, pretium non odio. Sed dapibus eros magna, "
+				+ "eu elementum eros mollis a. Curabitur non dui in sem suscipit dignissim. Donec commodo ex est, "
+				+ "ut placerat quam tempus auctor. Maecenas dignissim, lacus a molestie sagittis, orci massa aliquet "
+				+ "est, vitae porttitor eros est ac tellus. Nunc sed metus id elit dictum egestas. "
+				+ "Suspendisse porttitor pulvinar pharetra. ";
+		return cadena;
+
+	}
+
 }

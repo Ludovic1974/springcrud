@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +46,17 @@
 											<div class="text-center pt-1 mb-5 pb-1">
 												<input
 													class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
-													type="submit" value="Validar" />
+													type="submit" value="Validar" /><br/>													
+													<c:if test="${param.error != null }">													
+													<span class="errors">Usuario o contraseña incorrectos</span>
+													</c:if>
+													<c:if test="${param.logout != null }">													
+													<span class="errors">!Hasta pronto¡</span>
+													</c:if>
+													<c:if test="${param.error == null }">													
+													<br/>
+													</c:if>
+													
 											</div>
 										</form:form>
 									</div>
