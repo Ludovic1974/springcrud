@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -20,11 +21,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.ludo.tutoriales.dto.UserDto;
-import com.ludo.tutoriales.validation.EqualFields;
 
 @Entity
 @Table(name = "user")
-@EqualFields(message = "{user.fields.not.igual}", baseField = "password", matchField = "confirmPassword")
 public class User extends DateColumns {
 
 	@Id
@@ -62,7 +61,7 @@ public class User extends DateColumns {
 		this.books = books;
 	}
 
-	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, mappedBy = "user")
+	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, mappedBy = "user", fetch = FetchType.LAZY)
 	private Set<Role> roles = new HashSet<>();
 
 	public Set<Role> getRoles() {
@@ -123,6 +122,11 @@ public class User extends DateColumns {
 		this.setConfirmPassword(copy.getConfirmPassword());
 		this.setEnabled(copy.isEnabled());
 		this.setBooks(copy.getBooks());
+
+	}
+
+	public User(String username) {
+		this.username = username;
 
 	}
 

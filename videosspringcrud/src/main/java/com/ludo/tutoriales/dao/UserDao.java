@@ -9,11 +9,14 @@ public interface UserDao extends ObjectDao {
 
 	User get(String username);
 
-	void loanBooks(User user);
+	User getUserWithRoles(String username);
 
 	User getWithBooks(String username);
+
+	void loanBooks(User user);
 
 	List<?> listWithBooks();
 
 	List<?> findByEmail(Object email);
+
 }

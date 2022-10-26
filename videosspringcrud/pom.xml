@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutoriales</groupId>
 	<artifactId>videosspringcrud</artifactId>
-	<version>0.2.9-solving-issue-with-current-user-email</version>
+	<version>0.3.0-making-user-roles-visibles</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Solving an issue with the current user's email</name>
+	<name>Crud Book Model - Making user roles visibles</name>
 	<!-- FIXME change it to the project's website -->
 	<url>https://www.ludoviclaisnez.com</url>
 

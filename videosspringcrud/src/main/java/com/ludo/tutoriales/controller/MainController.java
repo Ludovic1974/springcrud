@@ -49,6 +49,7 @@ public class MainController {
 		msj += "Versión 0.2.7 Finalizar la configuración del inicio de sesión.<br/>";
 		msj += "Versión 0.2.8 Revisión global. Resolviendo un problema de seguridad.<br/>";
 		msj += "Versión 0.2.9 Revisión global. Resolviendo un problema con el email del usuario actual.<br/>";
+		msj += "Versión 0.3.0 Revisión global. Hacer que los roles de usuarios sean visibles.<br/>";
 		mv.addObject("descripcion_larga", msj);
 		mv.addObject("menu", "portada");
 		mv.setViewName("index");

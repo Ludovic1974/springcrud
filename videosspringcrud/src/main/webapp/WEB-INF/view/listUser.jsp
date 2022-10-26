@@ -126,6 +126,19 @@
 												<td><fmt:formatDate type="both"
 														value="${user.updatedAt}" dateStyle="long"
 														timeStyle="short" /></td>
+											<td><c:if test="${user.roles != null}">
+											<c:forEach items="${user.roles}" var="r">
+											${r.authority}
+											<c:if test="${user.roles.size()>1}"><br/></c:if>
+											</c:forEach>
+											</c:if>
+											<c:if test="${user.roles.isEmpty()}">
+											Sin permisos
+											</c:if>
+											
+											</td>			
+														
+														
 												<td>${user.enabled==true ? "Activado":"Desactivado"}</td>
 												<td><a href="${loan_books}"
 													title="Consultar listado de libros prestados a ${user.name}">

@@ -21,7 +21,7 @@
 	</div>
 
 
-	<jsp:include page="/WEB-INF/view/templates/footer.jsp">
+	<jsp:include page="/WEB-INF/view/templates/footer_no_fixed.jsp">
 		<jsp:param name="web" value="ludoviclaisnez.com" />
 	</jsp:include>
 </body>

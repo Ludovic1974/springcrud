@@ -24,6 +24,8 @@ public interface UserService {
 
 	User getUserWithBooks(String username);
 
+	User getUserWithRoles(String username);
+
 	void loanBooks(@Valid User user);
 
 }

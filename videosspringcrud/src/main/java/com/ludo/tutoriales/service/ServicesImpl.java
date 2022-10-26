@@ -204,9 +204,22 @@ public class ServicesImpl implements BookService, CategoryService, UserService, 
 
 	@Override
 	@Transactional
+	public User getUserWithRoles(String username) {
+
+		return userDao.getUserWithRoles(username);
+	}
+
+	@Override
+	@Transactional
 	public void save(Role role) {
 		roleDao.save(role);
+	}
 
+	@Override
+	@Transactional
+	public long numUserRole(String username) {
+
+		return roleDao.numUserRole(username);
 	}
 
 	@Override

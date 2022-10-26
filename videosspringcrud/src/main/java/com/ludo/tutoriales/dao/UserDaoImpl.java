@@ -24,7 +24,7 @@ public class UserDaoImpl implements UserDao {
 	public List<?> list() {
 		String sentencia;
 		TypedQuery<?> query;
-		sentencia = "from User u ORDER BY u.username";
+		sentencia = "SELECT distinct user from User user left outer join fetch user.roles roles ORDER BY u.username";
 		query = sessionFactory.getCurrentSession().createQuery(sentencia);
 		return query.getResultList();
 	}
@@ -33,7 +33,7 @@ public class UserDaoImpl implements UserDao {
 	public List<?> listWithBooks() {
 		String sentencia;
 		TypedQuery<?> query;
-		sentencia = "SELECT distinct user FROM User user left outer join fetch user.books books ORDER BY user.username";
+		sentencia = "SELECT distinct user FROM User user left outer join fetch user.books books left outer join fetch user.roles roles ORDER BY user.username";
 		query = sessionFactory.getCurrentSession().createQuery(sentencia);
 		return query.getResultList();
 	}
@@ -81,6 +81,19 @@ public class UserDaoImpl implements UserDao {
 		String sentencia = "SELECT user FROM User user left join fetch user.books books where user.username = :username ORDER BY books.title ASC";
 		User user = (User) sessionFactory.getCurrentSession().createQuery(sentencia).setParameter("username", username)
 				.uniqueResult();
+		return user;
+	}
+
+	@Override
+	public User getUserWithRoles(String username) {
+		User user = null;
+		String sentencia = "SELECT user FROM User user inner join fetch user.roles roles where user.username = :username ORDER BY roles.authority ASC";
+		user = (User) sessionFactory.getCurrentSession().createQuery(sentencia).setParameter("username", username)
+				.uniqueResult();
+		if (user == null) {
+			return sessionFactory.getCurrentSession().find(User.class, username);
+
+		}
 		return user;
 	}
 
